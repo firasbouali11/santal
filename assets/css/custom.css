@@ -1,0 +1,254 @@
+/* Add here all your CSS customizations */
+
+
+html #header .header-nav-main nav > ul > li.open > a,
+html #header .header-nav-main nav > ul > li:hover > a,
+html #header .header-nav-main nav > ul > li:focus > a,
+html #header .header-nav-main nav > ul > li > a.active  {
+  color: #3AB735;
+}
+
+#header .header-nav-main nav > ul > li.dropdown .dropdown-menu {
+		background: #FDA1A4;
+}
+
+#header .header-nav-main nav > ul > li.dropdown .dropdown-menu li a:not(.btn) {
+		color: #FFFFFF;
+}
+
+#header .header-nav-main nav > ul > li.dropdown .dropdown-menu li a:not(.btn):hover {
+		color: #3AB735;
+}
+
+#header .header-nav-main nav > ul > li.dropdown-mega .dropdown-mega-sub-title {
+		color: #000000;
+}
+#button1 {
+    background-color:transparent;
+    border-color:#ffffff;
+    color: #ffffff;
+    font-family: 'Gotu', sans-serif;
+
+
+}
+#button1:hover{
+    background-color:#ffffff;
+    border-color:#ffffff;
+    color:#A1CB37;
+}
+#button2 {
+    background-color:transparent;
+    border-color:#ffffff;
+
+
+}
+#button2:hover{
+    background-color:#ffffff;
+    border-color:#ffffff;
+    color:#A1CB37;
+
+}
+
+.green-color:hover{
+    color: #A1CB37 !important ;
+}
+.pink-color{
+    color : #FDA1A4 !important;
+}
+
+.btn{
+  background-color:#FCA1A0;
+  border-color:#FCA1A0;
+  color:#ffffff;
+}
+.btn:hover{
+  background-color:rgb(235, 137, 135);
+  border-color:rgb(235, 137, 135);
+  color:#ffffff;
+
+
+}
+.btn-pink{
+  border-color: #FCA1A0 !important;
+  color: #FCA1A0 !important;
+}
+.btn-pink:hover{
+  background-color: #FDA1A4 !important;
+}
+
+.header-nav.dropdown-menu{
+    background-color: #DEDCDD;
+}
+
+.dropdown-width{
+    min-width:40px !important;
+  }
+#my-div{
+    background-color: #DEDCDD;
+    
+}
+
+#my-div label{
+    font-family: 'Gotu', sans-serif;
+}
+.overflow-hidden span{
+    font-family: 'Gotu', sans-serif;
+    
+}
+.background-pink{
+  border-color: #FDA1A4 ;
+  background-color: #FDA1A4 !important;
+}
+
+.owl-carousel .owl-dots .owl-dot span,
+.owl-theme .owl-dots .owl-dot.active span, 
+  .owl-theme .owl-dots .owl-dot:hover span {
+    background:#fff  !important;
+  }
+  .owl-carousel.owl-theme .nav-btn{
+    background: #fff !important;
+  }
+.owl-next, .owl-prev{
+    color: #FFFFFF !important;
+}
+.owl-dots span{
+    background-color: #DEDCDD !important;
+}
+#header .header-nav-main nav > ul > li.dropdown-mega .dropdown-mega-sub-title {
+		color: #000000;
+
+}
+
+.upalittle{
+    margin-bottom:-100px;
+}
+
+.footer-copyright {
+	margin-top:1em !important;
+	margin-left: 35%;
+}
+
+.nav > .nav-item > .nav-link {
+	color: #707070;
+}
+
+.nav > .nav-item > .nav-link.active {
+	color: #000;
+}
+
+.nav > .nav-item > .nav-link:hover, .nav > .nav-item > .nav-link:focus, .nav > .nav-item > .nav-link:active {
+	color: #FDA1A4;
+}
+
+html .btn-primary,
+html.sticky-header-active .btn-sticky-primary {
+  border-color: #6cd367;
+  color: #ffffff;
+  background-color: #6cd367;
+}
+html .btn-primary:hover,
+html.sticky-header-active .btn-sticky-primary:hover,
+html .btn-primary:focus,
+html.sticky-header-active .btn-sticky-primary:focus {
+  border-color: #3AB735;
+  background-color: #3AB735;
+  color: #ffffff;
+}
+span{
+    color : black
+}
+.noUi-handle,.noUi-connect{
+    background-color : #FDA1A4 !important;
+}
+.header-top i,.icon-box i{
+    color: #3ab735 !important;
+}
+
+.header-top a:hover,.header-top a:focus {
+	color: #3AB735 !important;
+	text-decoration: none;
+}
+
+.header-top-social-icons li a:hover i{
+    color :#fff !important;
+}
+
+.pagination .page-item + .page-item.active .page-link {
+  border: 1px solid #FDA1A4;
+  background: #FDA1A4;
+}
+.pagination .page-link:hover:not(.next):not(.prev) {
+  color: #3AB735 !important;
+  border: 1px solid #3AB735 !important;
+}
+
+.text-color-default a:hover, .breadcrumb li a:hover, .accordion.accordion-style-1 .accordion-header a:hover,
+.accordion.accordion-style-1 .accordion-header a:focus 
+{
+  color: #3AB735 !important;
+}
+
+.breadcrumb .active {
+	color: #3AB735 !important;
+}
+
+.accordion.accordion-style-1 .accordion-header a:hover,
+.accordion.accordion-style-1 .accordion-header a:focus {
+	color :#FDA1A4 !important;
+}
+
+.sidebar .sort-source > div > a:hover,
+.sidebar .sort-source > li > a:hover,
+.sidebar .sort-source > div > a:focus,
+.sidebar .sort-source > li > a:focus {
+	color: #3AB735 !important;
+}
+
+html .bg-primary:not(.no-skin) {
+  background-color: #3c4042 !important;
+}
+#my-img{
+  animation : go 2s linear infinite;
+}
+/* html.shop .body , #header .header-body{
+	background-color : #f1eeee !important; 
+} */
+.overflow-hidden > h2{
+  position: relative !important;
+  padding-bottom: 10px !important
+}
+.overflow-hidden > h2::before{
+  content: "" ;
+  position : absolute;
+  display: inline-block;
+  bottom: 0;
+  left: 50%;
+  height: 5px;
+  width: 100px;
+  transform: translateX(-50%);
+  background-color : #FCA1A0 !important;
+}
+.header-top .nav-link:hover{
+  color : #FCA1A0 !important
+}
+.header-background {
+  background: url('../img/particles-featured-image.jpg') no-repeat fixed !important; 
+  background-size: cover !important;
+  filter: brightness(0.7);
+}
+.reduction {
+  display: flex;
+  align-items: center;
+}
+@keyframes go{
+  0%{transform:translatex(0%)}
+  25%{transform:translatex(100%)}
+  50%{transform: translateX(0%);}
+  75%{transform: translateX(-100%)}
+}
+
+@media (max-width: 1140px) {
+	.dropdown-item{
+    font-size: 10px !important;
+  }
+}
