@@ -83,19 +83,19 @@
 								<h2 class="mt-3">Ce produit est déjà dans votre panier</h2>
 							</div>
 					<?php }
-					}else{
-						echo '<a class="mx-5 btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold" href="'.base_url().'shop-login">AJOUTER AU PANIER</a>';
+					} else {
+						echo '<a class="mx-5 btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold" href="' . base_url() . 'shop-login">AJOUTER AU PANIER</a>';
 					} ?>
 				</form>
 				<hr class="my-4">
-				<div class="d-flex align-items-center">
+				<!-- <div class="d-flex align-items-center">
 					<span class="text-2">PARTAGER</span>
 					<ul class="social-icons social-icons-dark social-icons-1 ml-3">
 						<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
 						<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
 						<li class="social-icons-instagram"><a href="http://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
 					</ul>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="row mb-5">
@@ -138,10 +138,10 @@
 										<div class="comment-block">
 											<span class="comment-by">
 												<span class="comment-rating">
-													<?php for($i=0;$i<$comment["rate"];$i++){?>
-													<i class="fas fa-star text-color-dark mr-1"></i>
+													<?php for ($i = 0; $i < $comment["rate"]; $i++) { ?>
+														<i class="fas fa-star text-color-dark mr-1"></i>
 													<?php } ?>
-													
+
 												</span>
 												<strong class="comment-author text-color-dark"><?= $comment["name"] ?></strong>
 												<span class="comment-date border-right-0 text-color-light-3"><?= $comment["created"] ?></span>
@@ -213,122 +213,35 @@
 				</div>
 			</div>
 			<div class="row">
-
-				<div class="col-sm-6 col-md-3 mb-4">
-					<div class="product portfolio-item portfolio-item-style-2">
-						<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
-							<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
-								<a href="shop-product-detail-right-sidebar.html">
-									<img src="<?= base_url() ?>assets/img/products/parfum-2.jpg" class="img-fluid" alt="">
-								</a>
-								<span class="image-frame-action">
-									<a href="#" class="btn text-white btn-rounded btn-v-3 font-weight-bold">AJOUTER AU PANIER</a>
+				<?php foreach ($similar as $product) { ?>
+					<div class="col-sm-6 col-md-3 mb-4">
+						<div class="product portfolio-item portfolio-item-style-2">
+							<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+								<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+									<a href="shop-product-detail-right-sidebar.html">
+										<img src="<?= base_url() ?>assets/img/products/<?php echo explode(":", $product["images"])[0]; ?>" class="img-fluid" alt="">
+									</a>
+									<span class="image-frame-action">
+										<a href="#" class="btn text-white btn-rounded btn-v-3 font-weight-bold">AJOUTER AU PANIER</a>
+									</span>
 								</span>
-							</span>
-						</div>
-						<div class="product-info d-flex flex-column flex-lg-row justify-content-between">
-							<div class="product-info-title">
-								<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="shop-product-detail-right-sidebar.html">GIORGIO ARMANI - Si Fiori</a></h3>
-								<span class="price font-primary text-4"><strong class="text-color-dark">200 DT</strong></span>
-								<span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">220 DT</strong></span>
 							</div>
-							<div class="product-info-rate d-flex">
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default"></i>
+							<div class="product-info d-flex flex-column flex-lg-row justify-content-between">
+								<div class="product-info-title">
+									<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="shop-product-detail-right-sidebar.html"><?= $product["title"] ?></a></h3>
+									<span class="price font-primary text-4"><strong class="text-color-dark"><?= $product["price"] ?> DT</strong></span>
+									<!-- <span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">220 DT</strong></span> -->
+								</div>
+								<div class="product-info-rate d-flex">
+									<?php for ($i = 0; $i < $product["rate"]; $i++) { ?>
+										<i class="fas fa-star text-color-dark mr-1"></i>
+									<?php } ?>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				<?php } ?>
 
-				<div class="col-sm-6 col-md-3 mb-4">
-					<div class="product portfolio-item portfolio-item-style-2">
-						<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
-							<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
-								<a href="shop-product-detail-right-sidebar.html">
-									<img src="<?= base_url() ?>assets/img/products/parfum-3.jpg" class="img-fluid" alt="">
-								</a>
-								<span class="image-frame-action">
-									<a href="#" class="btn text-white btn-rounded btn-v-3 font-weight-bold">AJOUTER AU PANIER</a>
-								</span>
-							</span>
-						</div>
-						<div class="product-info d-flex flex-column flex-lg-row justify-content-between">
-							<div class="product-info-title">
-								<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="shop-product-detail-right-sidebar.html">GUCCI - Gucci Guilty Love Edition</a></h3>
-								<span class="price font-primary text-4"><strong class="text-color-dark">287 DT</strong></span>
-								<span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">300 DT</strong></span>
-							</div>
-							<div class="product-info-rate d-flex">
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-3 mb-4">
-					<div class="product portfolio-item portfolio-item-style-2">
-						<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
-							<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
-								<a href="shop-product-detail-right-sidebar.html">
-									<img src="img/products/parfum-4.jpg" class="img-fluid" alt="">
-								</a>
-								<span class="image-frame-action">
-									<a href="#" class="btn text-white btn-rounded btn-v-3 font-weight-bold">AJOUTER AU PANIER</a>
-								</span>
-							</span>
-						</div>
-						<div class="product-info d-flex flex-column flex-lg-row justify-content-between">
-							<div class="product-info-title">
-								<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="shop-product-detail-right-sidebar.html">YVES SAINT LAURENT - Black Opium Brume</a></h3>
-								<span class="price font-primary text-4"><strong class="text-color-dark">144 DT</strong></span>
-								<span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">180 DT</strong></span>
-							</div>
-							<div class="product-info-rate d-flex">
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-3 mb-4">
-					<div class="product portfolio-item portfolio-item-style-2">
-						<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
-							<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
-								<a href="shop-product-detail-right-sidebar.html">
-									<img src="<?= base_url() ?>assets/img/products/parfum-5.jpg" class="img-fluid" alt="">
-								</a>
-								<span class="image-frame-action">
-									<a href="#" class="btn text-white btn-rounded btn-v-3 font-weight-bold">AJOUTER AU PANIER</a>
-								</span>
-							</span>
-						</div>
-						<div class="product-info d-flex flex-column flex-lg-row justify-content-between">
-							<div class="product-info-title">
-								<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="shop-product-detail-right-sidebar.html">GUCCI - Gucci Bamboo</a></h3>
-								<span class="price font-primary text-4"><strong class="text-color-dark">228 DT</strong></span>
-								<span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">250 DT</strong></span>
-							</div>
-							<div class="product-info-rate d-flex">
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default mr-1"></i>
-								<i class="fas fa-star text-color-default"></i>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>

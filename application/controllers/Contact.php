@@ -55,4 +55,9 @@ class Contact extends CI_Controller
         $id = $this->input->post("id");
         $this->contact_model->delete_testimonies($id);
     }
+
+    function updateContact(){
+        $this->contact_model->update_contact();
+        redirect(base_url()."dashboard/settings");
+    }
 }

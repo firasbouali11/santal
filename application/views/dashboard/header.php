@@ -239,7 +239,7 @@
                                 <a class="admin-features-item" href="<?= base_url() ?>dashboard/ecommerce_orders_list"><i class="ti-support"></i>
                                     <span>Commandes</span>
                                 </a>
-                                <a class="admin-features-item" href="javascript:;"><i class="ti-settings"></i>
+                                <a class="admin-features-item" href="<?= base_url() ?>dashboard/settings"><i class="ti-settings"></i>
                                     <span>SETTINGS</span>
                                 </a>
                             </div>
@@ -327,12 +327,6 @@
                             <span class="nav-label">Statistiques</span></a>
                     </li>
                 </ul>
-                <div class="sidebar-footer">
-                    <a href="javascript:;"><i class="ti-settings"></i></a>
-                    <a href="calendar"><i class="ti-calendar"></i></a>
-                    <a href="javascript:;"><i class="ti-comments"></i></a>
-                    <a href="javascript:;" class="logout"><i class="ti-power-off"></i></a>
-                </div>
             </div>
         </nav>
         <!-- END SIDEBAR-->

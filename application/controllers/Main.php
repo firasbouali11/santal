@@ -18,6 +18,8 @@ class Main extends CI_Controller
 		$data["testimonies"] = $this->contact_model->get_testimonies();
 		$data["panier"] = $this->cart_model->get_cart();
 		$data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
+		$data["contact"] = $this->contact_model->get_contact();
+		$data['plan'] = $this->product_model->get_good_plan();
 		$this->load->view("templates_site/header",$data);
 		$this->load->view('Home', $data);
 		$this->load->view("templates_site/footer");
@@ -35,6 +37,7 @@ class Main extends CI_Controller
 			$data['men_products'] = $this->product_model->get_men_products();
 			$data["panier"] = $this->cart_model->get_cart();
 			$data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
+			$data["contact"] = $this->contact_model->get_contact();
 			$this->load->view($page, $data);
 		} else {
 			if ($page === "user-dashboard" && !$this->session->userdata("logged_in")) {
@@ -50,9 +53,11 @@ class Main extends CI_Controller
 			$data['top_products'] = $this->product_model->get_top_rated_products();
 			$data['popular_products'] = $this->product_model->get_popular_products();
 			$data['best_products'] = $this->product_model->get_best_selling_products();
+			$data["contact"] = $this->contact_model->get_contact();
 			$data["panier"] = $this->cart_model->get_cart();
 			$data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
 			$data["destinations"] = $this->cart_model->get_destinations();
+
 			$this->load->view("templates_site/header",$data);
 			$this->load->view($page, $data);
 			$this->load->view("templates_site/footer");
@@ -65,6 +70,9 @@ class Main extends CI_Controller
 		$data['women_categories'] = $this->category_model->get_women_categories();
 		$data["panier"] = $this->cart_model->get_cart();
 		$data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
+		$data["similar"] = $this->product_model->get_products_by_category("deodorants");
+		$data["contact"] = $this->contact_model->get_contact();
+
 		$this->load->view("templates_site/header",$data);
 		$this->load->view("produit-detail", $data);
 		$this->load->view("templates_site/footer");
@@ -77,6 +85,10 @@ class Main extends CI_Controller
 		$data['men_products'] = $this->product_model->get_filtred_products();
 		$data["panier"] = $this->cart_model->get_cart();
 		$data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
+		$data["contact"] = $this->contact_model->get_contact();
+
 		$this->load->view("produits",$data);
 	}
+
+	
 }

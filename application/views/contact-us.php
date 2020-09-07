@@ -36,7 +36,7 @@
 									<div class="icon-box-info-title">
 										<h3 class="font-weight-bold text-4 mb-0">Addresse</h3>
 									</div>
-									<p>Rue D'Espagne, Bizerte,Tunisie</p>
+									<p><?= $contact[1]["value"] ?></p>
 								</div>
 							</div>
 						</div>
@@ -49,7 +49,7 @@
 									<div class="icon-box-info-title">
 										<h3 class="font-weight-bold text-4 mb-0">Adresse e-mail</h3>
 									</div>
-									<p><a href="mailto:you@domain.com">you@domain.com</a></p>
+									<p><a href="mailto:you@domain.com"><?= $contact[2]["value"] ?></a></p>
 								</div>
 							</div>
 						</div>
@@ -62,7 +62,7 @@
 									<div class="icon-box-info-title">
 										<h3 class="font-weight-bold text-4 mb-0">Numéro de téléphone</h3>
 									</div>
-									<p><a href="tel:+21624 505 920">(216) 24 505 920</a></p>
+									<p><a href="tel:+21624 505 920">(216) <?= $contact[0]["value"] ?></a></p>
 								</div>
 							</div>
 						</div>

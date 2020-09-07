@@ -10,7 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<title>SANTAL - Home</title>
-
+	
 	<meta name="keywords" content="HTML5 Template" />
 	<meta name="description" content="EZY - Responsive HTML5 Template">
 	<meta name="author" content="okler.net">
@@ -46,7 +46,7 @@
 
 	<!-- Theme Custom CSS -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/custom.css">
-	<link rel="icon" href="<?= base_url() ?>assets/img/logos/logo1.png">
+	<link rel="icon" href="<?= base_url() ?>assets/img/logos/logo.png" >
 
 	<!-- Head Libs -->
 	<script src="<?= base_url() ?>assets/vendor/modernizr/modernizr.min.js"></script>
@@ -76,18 +76,18 @@
 							<div class="header-column justify-content-start">
 								<span class="d-none d-sm-flex align-items-center">
 									<i class="fas fa-map-marker-alt mr-1"></i>
-									1234 Street Name, City Name
+									<?= $contact[1]["value"] ?>
 								</span>
 								<span class="d-none d-sm-flex align-items-center ml-4">
 									<i class="fas fa-phone mr-1"></i>
-									<a href="tel:+1234567890">123-456-7890</a>
+									<a href="tel:+216<?= $contact[0]["value"] ?>"><?= $contact[0]["value"] ?></a>
 								</span>
 							</div>
 							<div class="header-column justify-content-end">
 								<ul class="nav">
-									<li><a href="#" class="header-search-button order-1 text-5 d-none d-sm-block mt-2 mr-xl-2">
+									<!-- <li><a href="#" class="header-search-button order-1 text-5 d-none d-sm-block mt-2 mr-xl-2">
 											<i class="lnr lnr-magnifier pink-color "></i>
-										</a></li>
+										</a></li> -->
 									<li class="nav-item">
 										<a class="nav-link" href="<?= base_url() ?>contact-us">Contactez-nous</a>
 									</li>
@@ -124,7 +124,7 @@
 					<div class="header-row">
 						<div class="header-column justify-content-start">
 							<div class="header-logo">
-								<a href="Home">
+								<a href="<?= base_url() ?>">
 									<img alt="Santal" style="width: 100px" src="<?= base_url() ?>assets/img/logos/logo-santal-light.png">
 								</a>
 							</div>

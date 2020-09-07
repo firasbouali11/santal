@@ -65,7 +65,7 @@
 										</span>
 									</span>
 								</div>
-								<h3 class="text-color-default text-2 mb-0"><a href="produit-detail.html"><?php echo $popular->title; ?></a></h3>
+								<h3 class="text-color-default text-2 mb-0"><a href="<?= base_url() . 'produits/' . $popular->id ?>"><?php echo $popular->title; ?></a></h3>
 								<span class="price font-primary text-4"><strong class="text-color-dark"><?php echo $popular->price; ?> DT</strong></span>
 								<!-- <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">69 DT</strong></span> -->
 								<script>
@@ -111,7 +111,7 @@
 								</div>
 							</div>
 							<div class="col-8">
-								<h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-left-sidebar.html"><?php echo $new->title; ?></a></h3>
+								<h3 class="text-color-default text-2 mb-0"><a href="<?= base_url() . 'produits/' . $new->id ?>"><?php echo $new->title; ?></a></h3>
 								<span class="price font-primary text-4"><strong class="text-color-dark"><?php echo $new->price; ?> DT</strong></span>
 								<!-- <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">69 DT</strong></span> -->
 							</div>
@@ -142,7 +142,7 @@
 								</div>
 							</div>
 							<div class="col-8">
-								<h3 class="text-color-default text-2 mb-1"><a href="shop-product-detail-left-sidebar.html"><?php echo $top->title; ?></a></h3>
+								<h3 class="text-color-default text-2 mb-1"><a href="<?= base_url() . 'produits/' . $top->id ?>"><?php echo $top->title; ?></a></h3>
 
 								<span class="product-info-rate d-flex mb-1">
 
@@ -165,13 +165,15 @@
 					<h2 class="font-weight-bold text-4 mb-4">Nos bons plans</h2>
 					<div class="image-frame">
 						<div class="image-frame-wrapper align-items-center">
-							<img src="<?= base_url() ?>assets/img/shop/product-bg-16.jpg" class="img-fluid" alt="">
+							<img src="<?= base_url() ?>assets/img/shop/<?= $plan["cover"] ?>" class="img-fluid" alt="">
 							<div class="image-frame-info image-frame-info-show flex-column align-items-start px-4 mx-2">
 								<h2 class="text-color-light font-weight-semibold text-4 line-height-1 mb-4">
-									<strong class="font-weight-semibold text-6">55% OFF</strong><br>Crèmes soins
-									de visage
+									<strong class="font-weight-semibold text-6"><?= $plan["remise"] ?>% OFF</strong>
+									<br>
+									<!-- Crèmes soins
+									de visage -->
 								</h2>
-								<a href="shop-3-columns-left-sidebar.html" class="btn  btn-rounded font-weight-bold btn-h-2 btn-v-3">ACHETER
+								<a href="<?= base_url() ?>produits/<?=$plan["product_id"] ?>" class="btn  btn-rounded font-weight-bold btn-h-2 btn-v-3">ACHETER
 									MAINTENANT</a>
 							</div>
 						</div>
@@ -304,7 +306,7 @@
 							</div>
 							<div class="product-info d-flex flex-column flex-lg-row justify-content-between">
 								<div class="product-info-title">
-									<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="produit-detail.html"><?php echo $best->title; ?></a>
+									<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="<?= base_url() . 'produits/' . $best->id ?>"><?php echo $best->title; ?></a>
 									</h3>
 									<span class="price font-primary text-4"><strong class="text-color-dark"><?php echo $best->price; ?> DT</strong></span>
 									<!-- <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">199 DT</strong></span> -->
@@ -351,7 +353,7 @@
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-8 col-md-5 col-lg-3 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
-					<a href="shop-3-columns-left-sidebar.html">
+					<a href="<?= base_url() ?>produits#femme_visage">
 						<div class="image-frame overlay overlay-show overlay-op-5 image-frame-style-1 image-frame-effect-2 image-frame-style-5">
 							<div class="image-frame-wrapper">
 								<img src="<?= base_url() ?>assets/img/shop/categorie-bg-1.jpg" class="img-fluid" alt="">
@@ -366,7 +368,7 @@
 					</a>
 				</div>
 				<div class="col-8 col-md-5 col-lg-3 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInLeftShorter">
-					<a href="shop-3-columns-left-sidebar.html">
+					<a href="<?= base_url() ?>produits#femme_cheveux">
 						<div class="image-frame overlay overlay-show overlay-op-5 image-frame-style-1 image-frame-effect-2 image-frame-style-5">
 							<div class="image-frame-wrapper">
 								<img src="<?= base_url() ?>assets/img/shop/categorie-bg-2.jpg" class="img-fluid" alt="">
@@ -381,7 +383,7 @@
 					</a>
 				</div>
 				<div class="col-8 col-md-5 col-lg-3 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInRightShorter">
-					<a href="shop-3-columns-left-sidebar.html">
+					<a href="<?= base_url() ?>produits#femme_deodorants">
 						<div class="image-frame overlay overlay-show overlay-op-5 image-frame-style-1 image-frame-effect-2 image-frame-style-5">
 							<div class="image-frame-wrapper">
 								<img src="<?= base_url() ?>assets/img/shop/categorie-bg-3.jpg" class="img-fluid" alt="">
@@ -396,7 +398,7 @@
 					</a>
 				</div>
 				<div class="col-8 col-md-5 col-lg-3 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200">
-					<a href="shop-3-columns-left-sidebar.html">
+					<a href="<?= base_url() ?>produits#femme_parfums">
 						<div class="image-frame overlay overlay-show overlay-op-5 image-frame-style-1 image-frame-effect-2 image-frame-style-5">
 							<div class="image-frame-wrapper">
 								<img src="<?= base_url() ?>assets/img/shop/categorie-bg-4.jpg" class="img-fluid" alt="">

@@ -198,4 +198,36 @@ class Product_model extends CI_Model
         $this->db->update("produits", $data);
         return true;
     }
+
+    function search_product($search){
+        $this->db->like("title",$search,"both");
+        $query = $this->db->get("produits");
+        return $query->result_array();
+    }
+    
+    function get_products_by_category($category){
+        $this->db->where("category", $category);
+        $this->db->limit(4);
+        $query = $this->db->get("produits");
+        return $query->result_array();
+    }
+
+    function get_good_plan(){
+        $query = $this->db->get("plan");
+        return $query->result_array()[0];
+    }
+
+    function update_plan($cover){
+        $remise = $this->input->post("remise");
+        $product_id = $this->input->post("product_id");
+
+        $data = array(
+            "remise"=>$remise,
+            "cover"=>$cover,
+            "product_id"=>$product_id,
+        );
+        $this->db->where("id",1);
+        $this->db->update("plan",$data);
+    }
+
 }

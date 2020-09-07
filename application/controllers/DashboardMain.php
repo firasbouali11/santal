@@ -48,6 +48,7 @@ class DashboardMain extends CI_Controller
 			$data['users'] = $this->users_model->get_users();
 			$data['coupons'] = $this->coupons_model->get_coupons();
 			$data['comments'] = $this->product_model->get_all_comments();
+			$data['plan'] = $this->product_model->get_good_plan();
 			$data['popular_products'] = $this->product_model->get_popular_products();
 			$data['best_products'] = $this->product_model->get_best_selling_products();
 			$data["testimonies"] = $this->contact_model->get_all_testimonies();
@@ -65,6 +66,7 @@ class DashboardMain extends CI_Controller
 			$data["m12"] = $this->facturation_model->get_revenue_by_date(12);
 			$data["num_homme"] = $this->facturation_model->get_num_product_homme();
 			$data["num_femme"] = $this->facturation_model->get_num_product_femme();
+			$data["contact"] = $this->contact_model->get_contact();
 
 			$this->load->view("dashboard/header",$data);
 			$this->load->view("dashboard/$page", $data);

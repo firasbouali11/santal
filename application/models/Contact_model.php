@@ -40,4 +40,23 @@ class Contact_model extends CI_Model{
         return true;
     }
 
+    function get_contact(){
+        $query = $this->db->get("contact");
+        return $query->result_array();
+    }
+
+    function update_contact(){
+        $phone = $this->input->post("phone");
+        $add = $this->input->post("add");
+        $email = $this->input->post("email");
+
+        $this->db->where("label","phone");
+        $this->db->update("contact",array("value"=>$phone));
+        $this->db->where("label","location");
+        $this->db->update("contact",array("value"=>$add));
+        $this->db->where("label","email");
+        $this->db->update("contact",array("value"=>$email));
+    }
+     
+
 }

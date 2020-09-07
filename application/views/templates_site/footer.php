@@ -29,11 +29,11 @@
 				<div class="col-lg-3">
 					<h2 class="text-3 mb-3">CONTACT</h2>
 					<ul class="list list-icons list-unstyled">
-						<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Adresse:</span> Mon adresse</li>
+						<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Adresse:</span> <?= $contact[1]["value"] ?></li>
 						<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Téléphone:</span> <a href="tel:+1234567890">(123)
-								456-7890</a>
+						<?= $contact[0]["value"] ?></a>
 						</li>
-						<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Email:</span> <a href="mailto:mail@example.com" class="link-underline-light">mail@example.com</a></li>
+						<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Email:</span> <a href="mailto:mail@example.com" class="link-underline-light"><?= $contact[2]["value"] ?></a></li>
 					</ul>
 					<div class="col-md-7 col-lg-8">
 						<ul class="social-icons social-icons-transparent social-icons-icon-light social-icons-lg">
@@ -47,7 +47,7 @@
 
 			<div class="footer-copyright">
 				<div class="container">
-					<p class="text-center">Copyrights © 2018. </p>
+					<p class="text-center">Copyrights © 2020, ENSI Junior Entreprise </p>
 				</div>
 			</div>
 

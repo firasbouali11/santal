@@ -79,4 +79,39 @@ class Products extends CI_Controller
         $this->product_model->edit_product($id, $images);
         redirect("/dashboard/ecommerce_products_list");
     }
+
+    function searchProduct(){
+        $search = $this->input->post("search");
+        // print_r($pro);
+        $data['men_categories'] = $this->category_model->get_men_categories();
+		$data['women_categories'] = $this->category_model->get_women_categories();
+		$data['men_products'] = $this->product_model->search_product($search);
+		$data["panier"] = $this->cart_model->get_cart();
+        $data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
+        $data["contact"] = $this->contact_model->get_contact();
+
+        $this->load->view("produits",$data);
+    }
+
+    function updatePlan(){
+        $config["upload_path"] = './assets/img/shop/';
+        $config["allowed_types"] = "gif|png|jpg";
+        $config["max_size"] = "204800";
+        $config["max_width"] = "500000";
+        $config["max_height"] = "500000";
+        $this->load->library("upload",$config);
+        if(!$this->upload->do_upload()){
+            $errors = array("error" => $this->upload->display_errors());
+        }else{
+            $data = array("upload_data" => $this->upload->data());
+            $cover = $_FILES["userfile"]["name"];
+        }
+        $backup =  $this->input->post("update_cover");
+
+        if($cover) 
+            $this->product_model->update_plan($cover);
+        else
+            $this->product_model->update_plan($backup);
+        redirect(base_url()."dashboard/ecommerce_products_list");
+    }
 }

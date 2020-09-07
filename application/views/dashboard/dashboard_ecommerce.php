@@ -129,12 +129,12 @@
                                                 <h5 class="media-heading">
                                                     <a href="javascript:;"><?= $best->title ?></a>
                                                 </h5>
-                                                <div class="h4 text-success"><?= $best->price ?></div>
+                                                <div class="h4 text-success"><?= $best->price ?> DT</div>
                                                 <p class="font-13 text-light mb-1"><?= $best->description ?></p>
                                             </div>   
                                             <div class="text-right" style="width:100px;">
-                                                <h3 class="mb-1 font-strong text-success"><sup>$</sup>7800</h3>
-                                                <div class="text-muted">312 sales</div>
+                                                <h3 class="mb-1 font-strong text-success"><?= ($best->quatityTotale - $best->quantity)*$best->price ?><sup>DT</sup></h3>
+                                                <div class="text-muted"><?= $best->quatityTotale - $best->quantity ?> Ventes</div>
                                             </div>
                                         </div>
                                     </li>

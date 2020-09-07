@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'Main';
 $route["produits/filtred"] = "main/filtred";
+$route["produits/searchProduct"] = "products/searchProduct";
 $route["produits/(:any)"] = "main/single_product/$1";
 $route["dashboard/product/(:any)"] = "dashboardMain/product/$1";
 $route["dashboard/order/(:any)"] = "dashboardMain/order_details/$1";

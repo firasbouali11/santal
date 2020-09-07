@@ -63,11 +63,11 @@
 							<div class="header-column justify-content-start">
 								<span class="d-none d-sm-flex align-items-center">
 									<i class="fas fa-map-marker-alt mr-1"></i>
-									1234 Street Name, City Name
+									<?= $contact[1]["value"] ?>
 								</span>
 								<span class="d-none d-sm-flex align-items-center ml-4">
 									<i class="fas fa-phone mr-1"></i>
-									<a href="tel:+1234567890">123-456-7890</a>
+									<a href="tel:+1234567890"><?= $contact[0]["value"] ?></a>
 								</span>
 							</div>
 							<div class="header-column justify-content-end">
@@ -118,9 +118,9 @@
 						</div>
 						<div class="header-column justify-content-end">
 							<div class="header-search-expanded">
-								<form method="GET">
+								<form method="POST" action="<?= base_url() ?>produits/searchProduct">
 									<div class="input-group bg-light border">
-										<input type="text" class="form-control text-4" name="s" placeholder="I'm looking for..." aria-label="I'm looking for...">
+										<input type="text" class="form-control text-4" name="search" placeholder="I'm looking for..." aria-label="I'm looking for...">
 										<span class="input-group-btn">
 											<button class="btn" type="submit"><i class="lnr lnr-magnifier text-color-dark"></i></button>
 										</span>
@@ -336,7 +336,7 @@
 					<div class="col-md-8 col-lg-9 order-1 order-md-2 mb-5 mb-md-0">
 						<div class="row align-items-center justify-content-between mb-4">
 							<div class="col-auto mb-3 mb-sm-0">
-								<form method="get">
+								<!-- <form method="get">
 									<div class="custom-select-1">
 										<select class="form-control border">
 											<option value="popularity">Trier par popularité</option>
@@ -346,7 +346,7 @@
 											<option value="price-desc">Trier par prix: de haut en bas</option>
 										</select>
 									</div>
-								</form>
+								</form> -->
 							</div>
 							<div class="col-auto">
 								<div class="d-flex align-items-center">
@@ -393,7 +393,7 @@
 											</div>
 											<div class="product-info d-flex flex-column flex-lg-row justify-content-between">
 												<div class="product-info-title">
-													<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="produit-detail"><?php echo $product["title"]; ?></a>
+													<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="<?= base_url() . 'produits/' . $product["id"] ?>"><?php echo $product["title"]; ?></a>
 													</h3>
 													<span class="price font-primary text-4"><strong class="text-color-dark"><?php echo $product["price"]; ?> DT</strong></span>
 													<!-- <span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">15 DT</strong></span> -->
@@ -468,7 +468,7 @@
 
 					<div class="col-lg-2 mb-2 mb-lg-0">
 						<a href="index" class="logo">
-							<img alt="Santal" class="img-fluid mb-3" src="img/logos/logo.png">
+							<img alt="Santal" class="img-fluid mb-3" src="<?= base_url() ?>assets/img/logos/logo.png">
 						</a>
 					</div>
 
@@ -493,11 +493,11 @@
 					<div class="col-lg-3">
 						<h2 class="text-3 mb-3">CONTACT</h2>
 						<ul class="list list-icons list-unstyled">
-							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Adresse:</span> Mon adresse</li>
+							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Adresse:</span> <?= $contact[1]["value"] ?></li>
 							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Téléphone:</span> <a href="tel:+1234567890">(123)
-									456-7890</a>
+									<?= $contact[0]["value"] ?></a>
 							</li>
-							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Email:</span> <a href="mailto:mail@example.com" class="link-underline-light">mail@example.com</a></li>
+							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Email:</span> <a href="mailto:mail@example.com" class="link-underline-light"><?= $contact[2]["value"] ?></a></li>
 						</ul>
 						<div class="col-md-7 col-lg-8">
 							<ul class="social-icons social-icons-transparent social-icons-icon-light social-icons-lg">
@@ -512,7 +512,7 @@
 				<div class="footer-copyright">
 					<div class="container">
 						<div class="row text-center">
-							<p class="text-center">Copyrights © 2018. All Rights Reserved by Okler</p>
+							<p class="text-center">Copyrights © 2020, ENSI Junior Entreprise </p>
 						</div>
 					</div>
 				</div>

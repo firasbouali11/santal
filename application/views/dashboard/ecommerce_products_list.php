@@ -65,5 +65,51 @@
                 </div>
             </div>
         </div>
+        <div class="page-content fade-in-up">
+            <div class="ibox">
+                <div class="ibox-body">
+                    <h5 class="font-strong mb-5">Nos Bon Plan</h5>
+                    <div class="row">
+
+                        <div class="col-lg-8">
+                            <form action="<?= base_url() ?>products/updatePlan" method="post" enctype="multipart/form-data" >
+                                <div class="row">
+                                    <div class="col-sm-6 form-group mb-4">
+                                        <label>Remise</label>
+                                        <div>
+                                            <input name="remise" value="<?= $plan["remise"] ?>" class="form-control form-control-solid" type="text" placeholder="Propriétaire">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-group mb-4">
+                                        <label>Produit</label>
+                                        <div>
+                                            <select class="selectpicker show-tick form-control" name="product_id" title="Sélectionner" data-style="btn-solid">
+                                                <?php foreach ($all_products as $product) { ?>
+                                                    <option <?= $product->id == $plan["product_id"] ? "selected":"" ?>  value='<?= $product->id ?>'><?= $product->title ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 form-group mb-4">
+                                        <label>Cover</label>
+                                        <div>
+                                            <input name="userfile" class="form-control form-control-solid" type="file" placeholder="Réduction">
+                                            <input type="hidden" name="update_cover" value="<?= $plan["cover"] ?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary btn-air mr-2">Save</button>
+                                    <!-- <button class="btn btn-secondary">Annuler</button> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <!-- END PAGE CONTENT-->
