@@ -10,9 +10,13 @@
                         <form action="<?= base_url() ?>coupons/addCoupons" method="post">
                             <div class="row">
                                 <div class="col-sm-6 form-group mb-4">
-                                    <label>Propriétaire</label>
+                                    <label>Propritaire</label>
                                     <div>
-                                        <input name="insta" class="form-control form-control-solid" type="text" placeholder="Propriétaire">
+                                        <select class="selectpicker show-tick form-control" name="productCategory" title="Sélectionner" data-style="btn-solid">
+                                            <?php foreach($collabs as $collab ) {?>
+                                                <option value=<?= $collab["id"] ?>><?= $collab["username"] ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-group mb-4">
@@ -43,4 +47,3 @@
         </div>
     </div>
     <!-- END PAGE CONTENT-->
-   

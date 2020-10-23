@@ -7,13 +7,6 @@
                         <h5 class="font-strong mb-4">LISTE DES COUPONS</h5>
                         <div class="flexbox mb-4">
                             <div class="flexbox">
-                                <label class="mb-0 mr-2">Réduction :</label>
-                                <select class="selectpicker show-tick form-control" id="type-filter" title="Filtrer" data-style="btn-solid" data-width="150px">
-                                    <option value="">Tous</option>
-                                    <option>10%</option>
-                                    <option>20%</option>
-                                    <option>30%</option>
-                                </select>
                             </div>
 							<div class="flexbox">
                                 <div class="input-group-icon input-group-icon-left mr-3">

@@ -20,6 +20,7 @@ class Main extends CI_Controller
 		$data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
 		$data["contact"] = $this->contact_model->get_contact();
 		$data['plan'] = $this->product_model->get_good_plan();
+		$data["user_info"] = $this->users_model->get_current_user($this->session->userdata("userId"));
 		$this->load->view("templates_site/header",$data);
 		$this->load->view('Home', $data);
 		$this->load->view("templates_site/footer");
@@ -43,9 +44,12 @@ class Main extends CI_Controller
 			if ($page === "user-dashboard" && !$this->session->userdata("logged_in")) {
 				redirect(base_url());
 			}else if($page === "user-dashboard" && $this->session->userdata("logged_in") ){
-				$data["user_info"] = $this->users_model->get_current_user($this->session->userdata("userId"));
+				// $data["user_info"] = $this->users_model->get_current_user($this->session->userdata("userId"));
 				$data["user_orders"] = $this->users_model->get_user_orders( $this->session->userdata("userId"));
+			}else if($page === "collab" && $this->session->userdata("logged_in") ){
+				$data["coupons_user"] = $this->coupons_model->coupons_owner();
 			}
+			$data["user_info"] = $this->users_model->get_current_user($this->session->userdata("userId"));
 			$data["testimonies"] = $this->contact_model->get_testimonies();
 			$data['women_categories'] = $this->category_model->get_women_categories();
 			$data['all_products'] = $this->product_model->get_all_products();
@@ -72,6 +76,7 @@ class Main extends CI_Controller
 		$data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
 		$data["similar"] = $this->product_model->get_products_by_category("deodorants");
 		$data["contact"] = $this->contact_model->get_contact();
+		$data["user_info"] = $this->users_model->get_current_user($this->session->userdata("userId"));
 
 		$this->load->view("templates_site/header",$data);
 		$this->load->view("produit-detail", $data);
@@ -86,6 +91,7 @@ class Main extends CI_Controller
 		$data["panier"] = $this->cart_model->get_cart();
 		$data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
 		$data["contact"] = $this->contact_model->get_contact();
+		$data["user_info"] = $this->users_model->get_current_user($this->session->userdata("userId"));
 
 		$this->load->view("produits",$data);
 	}

@@ -94,10 +94,40 @@
 								<input type="password" value="" class="form-control bg-light-5 border-0 rounded" name="password" id="shopLoginRegisterPassword" required>
 							</div>
 							<div class="form-group col-lg-6">
-								<label class="text-color-dark" for="shopLoginRegisterPassword2">REENTRER LE MOT DE PASSE:</label>
+								<label class="text-color-dark" for="shopLoginRegisterPassword2">COMFIRMER LE MOT DE PASSE:</label>
 								<input type="password" value="" class="form-control bg-light-5 border-0 rounded" name="password2" id="shopLoginRegisterPassword2" required>
 							</div>
 						</div>
+						<div class="form-row mb-3" id="ww">
+							<div class="form-group col">
+								<div class="form-check checkbox-custom checkbox-default">
+									<input class="form-check-input" type="checkbox" id="collab">
+									<label class="form-check-label text-color-dark-2" for="collab">
+										Devenir un collaborateur
+									</label>
+								</div>
+							</div>
+						</div>
+						<div id="colllab">
+						<div class="form-row mb-4">
+							<div class="form-group col-lg-6">
+								<label class="text-color-dark" for="shopLoginRegisterPassword">LIEN FACEBOOK</label>
+								<input type="url" value="" class="form-control bg-light-5 border-0 rounded" name="lien_fb" id="shopLoginRegisterPassword" >
+							</div>
+							<div class="form-group col-lg-6">
+								<label class="text-color-dark" for="shopLoginRegisterPassword2">LIEN INSTAGRAM</label>
+								<input type="url" value="" class="form-control bg-light-5 border-0 rounded" name="lien_insta" id="shopLoginRegisterPassword2" >
+							</div>
+						</div>
+						<div class="form-row mb-4">
+							<div class="form-group col-lg-12">
+								<label class="text-color-dark" for="shopLoginRegisterPassword">REMARQUES</label>
+								<textarea class="form-control bg-light-5 border-0 rounded" name="remarque" id="shopLoginRegisterPassword"></textarea>
+							</div>
+							
+						</div>
+
+					</div>
 						<div class="form-row">
 							<div class="col text-right">
 								<button type="submit" class="btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">S'INSCRIRE</button>
@@ -110,3 +140,14 @@
 	</section>
 
 </div>
+
+<script>
+	$("#colllab").fadeOut()
+	$("#ww").click(()=>{
+		if( $("#ww input").is(':checked') ){
+			$("#colllab").fadeIn()
+		}else{
+			$("#colllab").fadeOut()
+		}
+	})
+</script>

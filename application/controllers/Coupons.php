@@ -41,4 +41,8 @@ class Coupons extends CI_Controller
             // $this->load->view("templates_site/footer");
         }
     }
+    function updateCollab(){
+        $this->coupons_model->update_collab();
+        redirect(base_url()."collab");
+    }
 }

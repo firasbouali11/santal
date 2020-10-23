@@ -19,6 +19,10 @@ class Users extends CI_Controller
             $username = $this->input->post("username");
             $phone = $this->input->post("phone");
             $encPassword = md5($this->input->post("password"));
+            $lien_fb = $this->input->post("lien_fb");
+            $lien_insta = $this->input->post("lien_insta");
+            $remarque = $this->input->post("remarque");
+
             $verification_key = md5(rand());
             $data = array(
                 "name" => $name,
@@ -26,6 +30,9 @@ class Users extends CI_Controller
                 "username" => $username,
                 "password" => $encPassword,
                 "phone" => $phone,
+                "lien_fb" => $lien_fb,
+                "lien_insta" => $lien_insta,
+                "remarque" => $remarque,
                 "verification_key" => $verification_key,
             );
             $this->users_model->register_user($data);

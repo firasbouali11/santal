@@ -52,6 +52,18 @@ class Coupons_model extends CI_Model
         }
     }
 
+    function coupons_owner(){
+        $this->db->where("insta",$this->session->userdata("userId"));
+        $query = $this->db->get("coupons");
+        return $query->row_array();
+    }
+
+    function get_coupons_owners(){
+        $this->db->join("user","user.id = coupons.insta");
+        $query = $this->db->get("coupons");
+        return $query->result_array();
+    }
+
     function update_coupon()
     {
         $coupon = $this->input->post("couponn");
@@ -62,5 +74,17 @@ class Coupons_model extends CI_Model
         );
         $this->db->where("id", $query["id"]);
         $this->db->update("coupons", $data);
+    }
+
+    function update_collab(){
+        $lien_fb = $this->input->post("lien_fb");
+        $lien_insta = $this->input->post("lien_insta");
+
+        $data = array(
+            "lien_fb" => $lien_fb,
+            "lien_insta" => $lien_insta,
+        );
+        $this->db->where("id",$this->session->userdata("userId"));
+        $this->db->update("user",$data);
     }
 }

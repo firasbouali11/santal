@@ -146,31 +146,38 @@
 										<ul class="nav flex-column flex-lg-row" id="mainNav">
 											<li class="dropdown dropdown-mega">
 												<a class="dropdown-item dropdown-toggle active" href="<?= base_url() ?>">
-													Accueil
+													ACCEUIL
 												</a>
 											</li>
 											<?php foreach ($women_categories as $categ) { ?>
 
 												<li class="dropdown dropdown-mega dropdown-mega-style-2">
 													<a class="dropdown-item dropdown-toggle" href="produits#femme_<?php echo $categ->nom_categorie; ?>">
-														<?php echo $categ->nom_categorie; ?>
+														<?php echo strtoupper($categ->nom_categorie); ?>
 													</a>
 												</li>
 
 											<?php } ?>
 
-											<li class="dropdown">
+											<!-- <li class="dropdown">
 												<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>produits">
 													Homme
 												</a>
-											</li>
+											</li> -->
 											<li class="dropdown">
 												<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>about-us-1">
-													Qui sommes nous
+													QUI SOMMES NOUS
 												</a>
 											</li>
-
-
+											<?php if ($this->session->userdata("logged_in") && $user_info[0]->lien_fb) { ?>
+											<li class="dropdown">
+												<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>collab">
+													PROFILE
+												</a>
+											</li>
+											<?php } ?>
+											
+											
 										</ul>
 									</nav>
 								</div>
