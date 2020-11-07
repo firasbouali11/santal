@@ -18,10 +18,10 @@
                         <thead class="thead-default thead-lg">
                             <tr>
                                 <th>ID</th>
-                                <th>Customer</th>
+                                <th>Clients</th>
                                 <th>Email</th>
-                                <th>Testimonial</th>
-                                <th>Approval</th>
+                                <th>Temoignages</th>
+                                <th>Approuver</th>
 
                             </tr>
                         </thead>

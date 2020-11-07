@@ -133,29 +133,36 @@
 										<ul class="nav flex-column flex-lg-row" id="mainNav">
 											<li class="dropdown dropdown-mega">
 												<a class="dropdown-item dropdown-toggle active" href="<?= base_url() ?>">
-													Accueil
+													ACCEUIL
 												</a>
 											</li>
 											<?php foreach ($women_categories as $categ) { ?>
 
 												<li class="dropdown dropdown-mega dropdown-mega-style-2">
 													<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>produits#femme_<?php echo $categ->nom_categorie; ?>">
-														<?php echo $categ->nom_categorie; ?>
+														<?php echo strtoupper($categ->nom_categorie); ?>
 													</a>
 												</li>
 
 											<?php } ?>
 
-											<li class="dropdown">
+											<!-- <li class="dropdown">
 												<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>produits#homme">
 													Homme
 												</a>
-											</li>
+											</li> -->
 											<li class="dropdown">
 												<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>about-us-1">
-													Qui sommes nous
+													QUI SOMMES NOUS
 												</a>
 											</li>
+											<?php if ($this->session->userdata("logged_in") && $user_info[0]->lien_fb) { ?>
+											<li class="dropdown">
+												<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>collab">
+													PROFILE
+												</a>
+											</li>
+											<?php } ?>
 
 										</ul>
 									</nav>
@@ -461,7 +468,7 @@
 		<br>
 		<br>
 
-		<footer id="footer" class="footer-hover-links-light mt-0">
+		<footer id="footer" class="footer-hover-links-light mt-0" style='background:linear-gradient(to bottom,#19733B,#A2C63D) !important;'>
 			<div class="container">
 
 				<div class="row">
@@ -474,7 +481,7 @@
 
 					<div class="col-lg-4 mb-4 mb-lg-0">
 						<h2 class="text-3 mb-3">SANTAL.tn</h2>
-						<p>Notre boutique en ligne spécialisée dans la vente de produits cosmétiques en Tunisie.
+						<p class="text-color-light">Notre boutique en ligne spécialisée dans la vente de produits cosmétiques en Tunisie.
 							Découvrir nos crèmes pour le visage, nos huiles essentielles et végétales pour les cheveux
 							et le corps et plein d'autres produits au meilleurs prix.
 					</div>
@@ -484,20 +491,20 @@
 					<div class="col-lg-3 mb-3 mb-lg-0">
 						<h2 class="text-3 mb-3">NOS PRODUITS</h2>
 						<ul class="list list-icon list-unstyled">
-							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="shop-3-columns-left-sidebar">Promotions</a></li>
-							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="shop-3-columns-left-sidebar">Nouveautés</a></li>
-							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="shop-3-columns-left-sidebar">Meilleures ventes</a></li>
+							<li class="mb-2 text-color-light"><i class="fas fa-angle-right mr-2 ml-1"></i> <a class="text-color-light" href="shop-3-columns-left-sidebar">Promotions</a></li>
+							<li class="mb-2 text-color-light"><i class="fas fa-angle-right mr-2 ml-1"></i> <a class="text-color-light" href="shop-3-columns-left-sidebar">Nouveautés</a></li>
+							<li class="mb-2 text-color-light"><i class="fas fa-angle-right mr-2 ml-1"></i> <a class="text-color-light" href="shop-3-columns-left-sidebar">Meilleures ventes</a></li>
 						</ul>
 					</div>
 
 					<div class="col-lg-3">
 						<h2 class="text-3 mb-3">CONTACT</h2>
 						<ul class="list list-icons list-unstyled">
-							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Adresse:</span> <?= $contact[1]["value"] ?></li>
-							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Téléphone:</span> <a href="tel:+1234567890">(123)
+							<li class="mb-2 text-color-light"><i class="fas fa-angle-right mr-2 ml-1 text-color-light"></i> <span class="text-color-light">Adresse:</span> <?= $contact[1]["value"] ?></li>
+							<li class="mb-2 text-color-light"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Téléphone:</span> <a class=" text-color-light" href="tel:+1234567890">(123)
 									<?= $contact[0]["value"] ?></a>
 							</li>
-							<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Email:</span> <a href="mailto:mail@example.com" class="link-underline-light"><?= $contact[2]["value"] ?></a></li>
+							<li class="mb-2 text-color-light"><i class="fas fa-angle-right mr-2 ml-1"></i> <span class="text-color-light">Email:</span> <a href="mailto:mail@example.com" class="link-underline-light "><?= $contact[2]["value"] ?></a></li>
 						</ul>
 						<div class="col-md-7 col-lg-8">
 							<ul class="social-icons social-icons-transparent social-icons-icon-light social-icons-lg">
@@ -509,10 +516,10 @@
 					</div>
 				</div>
 
-				<div class="footer-copyright">
+				<div style="width:100%;display:flex;justify-content:center;">
 					<div class="container">
 						<div class="row text-center">
-							<p class="text-center">Copyrights © 2020, ENSI Junior Entreprise </p>
+							<p class="col-12 text-center  text-color-light">Copyrights © 2020, ENSI Junior Entreprise </p>
 						</div>
 					</div>
 				</div>

@@ -52,7 +52,8 @@
         <header class="header">
             <div class="page-brand">
                 <a href="<?= base_url() ?>dashboard/dashboard_ecommerce">
-                    <span class="brand">Santal</span>
+                    <!-- <span class="brand" style="margin:0 auto !important"><img style="width:100px; height:100px" src="<?= base_url() ?>assets/img/logos/logo.png" /></span> -->
+                    <span class="brand" > santal</span>
                     <span class="brand-mini">ST</span>
                 </a>
             </div>
@@ -240,16 +241,15 @@
                                     <span>Commandes</span>
                                 </a>
                                 <a class="admin-features-item" href="<?= base_url() ?>dashboard/settings"><i class="ti-settings"></i>
-                                    <span>SETTINGS</span>
+                                    <span>Paramétres</span>
                                 </a>
                             </div>
                             <div class="admin-menu-content">
-                                <div class="text-muted mb-2">Your Wallet</div>
+                                <div class="text-muted mb-2">Votre porte-monait</div>
                                 <div><i class="ti-wallet h1 mr-3 text-light"></i>
                                     <span class="h1 text-success"><?= $sum ?><sup>DT</sup></span>
                                 </div>
                                 <div class="d-flex justify-content-between mt-2">
-                                    <a class="text-muted" href="javascript:;">Earnings history</a>
                                     <a class="d-flex align-items-center logout">Logout<i class="ti-shift-right ml-2 font-20"></i></a>
                                 </div>
 
@@ -315,7 +315,7 @@
                             <span class="nav-label">Clients</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
-                                <a href="<?= base_url() ?>dashboard/ecommerce_customers">Client list</a>
+                                <a href="<?= base_url() ?>dashboard/ecommerce_customers">Liste des clients</a>
                             </li>
                             <li>
                                 <a href="<?= base_url() ?>dashboard/ecommerce_testimonials">Témoignages</a>

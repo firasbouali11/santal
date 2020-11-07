@@ -127,11 +127,11 @@
 			</div>
 		</div>
 	</section>
-	<section class="section bg-primary py-0">
+	<section class="section bg-primary py-0" style='background:linear-gradient(to bottom,#19733B,#A2C63D) !important;'>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 p-0 appear-animation" data-appear-animation="fadeInLeftShorter">
-					<div class="card bg-primary border-0 h-100 py-5">
+					<div class="card border-0 h-100 py-5">
 						<div class="card-body p-5">
 							<h2 class="font-weight-bold text-color-light text-5 mb-3">Notre politique</h2>
 							<p class="text-color-light opacity-7 mb-4">Lorem ipsum dolor sit amet, consectetur
@@ -159,7 +159,7 @@
 				<div class="col-md-6 order-1 order-md-2 p-0 background-pink">
 					<div class="card background-pink border-0 h-100 py-5">
 						<div class="card-body p-5 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
-							<h2 class="font-weight-bold text-color-light text-5 mb-3"></h2>
+							<h2 class="font-weight-bold text-color-light text-5 mb-3">Devenir Collaborateur</h2>
 							<p class="text-color-light opacity-7 mb-4">Lorem ipsum dolor sit amet, consectetur
 								adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc. Lorem
 								ipsum
@@ -319,7 +319,7 @@
 	<br>
 	<br>
 	<br>
-	<section class="section section-content-pull-top pull-top-level-2 pull-top-always bg-primary">
+	<section class="section section-content-pull-top pull-top-level-2 pull-top-always bg-primary" style='background:linear-gradient(to bottom,#19733B,#A2C63D) !important;'>
 		<div class="container">
 			<div class="row py-5 mb-5 px-3 px-sm-0 ">
 				<div class="col order-1 scale-1 p-0">

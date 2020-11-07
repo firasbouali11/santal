@@ -6,12 +6,12 @@
                 <h5 class="font-strong mb-4">Commentaires</h5>
                 <div class="flexbox mb-4">
                     <div class="flexbox">
-                        <label class="mb-0 mr-2">Type :</label>
+                        <!-- <label class="mb-0 mr-2">Type :</label>
                         <select class="selectpicker show-tick form-control" id="type-filter" title="Filtrer" data-style="btn-solid" data-width="150px">
                             <option value="">Tous</option>
                             <option>Approuvés</option>
                             <option>En attente</option>
-                        </select>
+                        </select> -->
                     </div>
                     <div class="flexbox">
                         <div class="input-group-icon input-group-icon-left mr-3">

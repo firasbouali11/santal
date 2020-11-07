@@ -47,7 +47,7 @@
                     <div class="col-xl-12">
                         <div class="ibox ibox-fullheight">
                             <div class="ibox-head">
-                                <div class="ibox-title">LATEST ORDERS</div>
+                                <div class="ibox-title">ORDERS RECENTS</div>
                                 <div class="ibox-tools">
                                     <a class="dropdown-toggle" data-toggle="dropdown"><i class="ti-more-alt"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -69,15 +69,15 @@
                                             <span class="h3 mb-0 text-pink font-strong">105</span>
                                         </span>
                                     </div> -->
-                                    <a class="flexbox" href="<?= base_url() ?>dashboard/ecommerce_orders_list">VIEW ALL<i class="ti-arrow-circle-right ml-2 font-18"></i></a>
+                                    <a class="flexbox" href="<?= base_url() ?>dashboard/ecommerce_orders_list">VOIR TOUT<i class="ti-arrow-circle-right ml-2 font-18"></i></a>
                                 </div>
                                 <div class="ibox-fullwidth-block">
                                     <table class="table table-hover">
                                         <thead class="thead-default thead-lg">
                                             <tr>
-                                                <th class="pl-4">Order ID</th>
-                                                <th>Customer</th>
-                                                <th>Amount</th>
+                                                <th class="pl-4">ID de l'ordre</th>
+                                                <th>Client</th>
+                                                <th>Somme</th>
                                                 
                                                 <th class="pr-4" style="width:300px">Date</th>
                                             </tr>
@@ -107,7 +107,7 @@
                     <div class="col-xl-8">
                         <div class="ibox ibox-fullheight">
                             <div class="ibox-head">
-                                <div class="ibox-title">BEST SELLERS</div>
+                                <div class="ibox-title">MEILLEUR VENTE </div>
                                 <div class="ibox-tools">
                                     <a class="dropdown-toggle" data-toggle="dropdown"><i class="ti-more-alt"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -146,7 +146,7 @@
                     <div class="col-xl-4 col-lg-6">
                         <div class="ibox ibox-fullheight">
                             <div class="ibox-head">
-                                <div class="ibox-title">POPULAR PRODUCTS</div>
+                                <div class="ibox-title">PRODUITS POPULAIRES</div>
                                 <div class="ibox-tools">
                                     <a class="dropdown-toggle" data-toggle="dropdown"><i class="ti-more-alt"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">

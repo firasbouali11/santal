@@ -4,7 +4,7 @@
         <div class="ibox">
             <div class="ibox-body">
                 <div class="flexbox mb-5">
-                    <h5 class="font-strong">CUSTOMERS LIST</h5>
+                    <h5 class="font-strong">LISTE DES CLIENTS</h5>
                     <div class="flexbox">
                         <div class="input-group-icon input-group-icon-left mr-3">
                             <span class="input-icon input-icon-right font-16"><i class="ti-search"></i></span>
@@ -18,10 +18,10 @@
                         <thead class="thead-default thead-lg">
                             <tr>
                                 <th>ID</th>
-                                <th>Customer</th>
+                                <th>Clients</th>
                                 <th>Email</th>
-                                <th>Purchases</th>
-                                <th>Phone</th>
+                                <th>Achats</th>
+                                <th>Telephone</th>
                                 <th class="no-sort"></th>
                             </tr>
                         </thead>

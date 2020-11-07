@@ -239,7 +239,7 @@
 				</div>
 			</section> -->
 	<section>
-		<div class="row text-center bg-dark">
+		<div class="row text-center " style='background:linear-gradient(to bottom,#19733B,#A2C63D) !important;'>
 			<div class="col-md-12">
 				<div class="featured-box">
 					<div class="m-4 appear-animation" data-appear-animation="fadeIn">

@@ -10,7 +10,7 @@
                         <select class="selectpicker show-tick form-control" id="type-filter" title="Filtrer" data-style="btn-solid" data-width="150px">
                             <option value="">Tous</option>
                             <option>En ligne</option>
-                            <option>À la livraison</option>
+                            <option>a la livraison</option>
                         </select>
                     </div>
                     <div class="input-group-icon input-group-icon-left mr-3">
