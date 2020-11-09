@@ -12,7 +12,7 @@
                                 <div class="col-sm-6 form-group mb-4">
                                     <label>Propritaire</label>
                                     <div>
-                                        <select class="selectpicker show-tick form-control" name="productCategory" title="Sélectionner" data-style="btn-solid">
+                                        <select class="selectpicker show-tick form-control" name="id_user" title="Sélectionner" data-style="btn-solid">
                                             <?php foreach($collabs as $collab ) {?>
                                                 <option value=<?= $collab["id"] ?>><?= $collab["username"] ?></option>
                                             <?php } ?>
@@ -31,10 +31,10 @@
                                         <input name="reduction" class="form-control form-control-solid" type="text" placeholder="Réduction">
                                     </div>
                                 </div>
-                                <div class="col-sm-6 form-group mb-4">
+                                <!-- <div class="col-sm-6 form-group mb-4">
                                     <label>Date d'expiration</label>
                                     <input name="expiration" class="form-control form-control-solid" type="date" placeholder="Date d'expiration">
-                                </div>
+                                </div> -->
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary btn-air mr-2">Valider</button>

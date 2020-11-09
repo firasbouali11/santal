@@ -61,6 +61,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         function get_facturation(){
             $this->db->join("facturation","user.id = facturation.idClient");
+            $this->db->order_by("facturation.id","DESC");
             $query = $this->db->get("user");
             return $query->result_array();
         }

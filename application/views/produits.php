@@ -156,7 +156,7 @@
 													QUI SOMMES NOUS
 												</a>
 											</li>
-											<?php if ($this->session->userdata("logged_in") && $user_info[0]->lien_fb) { ?>
+											<?php if ($this->session->userdata("logged_in") && $user_info[0]->collab != NULL) { ?>
 											<li class="dropdown">
 												<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>collab">
 													PROFILE

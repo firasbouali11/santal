@@ -6,6 +6,7 @@ class Product_model extends CI_Model
 
     public function get_all_products()
     {
+        // $this->db->join("commentaires","produits.id = commentaires.idProduit");
         $query = $this->db->get('produits');
         return $query->result();
     }
@@ -108,6 +109,8 @@ class Product_model extends CI_Model
             "content" => $review,
             "idProduit" => $id,
         );
+
+        // $ratings = $this->db->get_where("commentaires",array("idProduit" => $id))->result_array();
         return $this->db->insert("commentaires", $data);
     }
 

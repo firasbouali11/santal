@@ -78,6 +78,7 @@
 															$(".a").load(" .a")
 															$(".aa").text("")
 															$("#livra").text("Choisir la destination de la livraison")
+															$("#gover").val("cc")
 														}
 													})
 
@@ -98,6 +99,7 @@
 															$(".a").load(" .a")
 															$(".aa").text("")
 															$("#livra").text("Choisir la destination de la livraison")
+															$("#gover").val("cc")
 														}
 													})
 												})
@@ -112,6 +114,7 @@
 														$("#item<?= $produit['id'] ?>").load(" #item<?= $produit['id'] ?>")
 														$("#panier").load(" #panier")
 														$(".a").load(" .a")
+														$("#gover").val("cc")
 													},
 												})
 											})
@@ -169,7 +172,7 @@
 						<p>Vous aurez une reduction de 5% si vous choisissez au checkout de payer en ligne !</p>
 						<div class="form-row">
 							<div class="col">
-								<a class="btn btn-rounded font-weight-bold btn-h-2 btn-v-3 <?= !$this->session->userdata("logged_in") ? 'disabled':''?>" href="<?= base_url() ?>shop-checkout">PASSER À LA CAISSE </a>
+								<a class="btn btn-rounded font-weight-bold btn-h-2 btn-v-3 wa <?= !$this->session->userdata("logged_in") ? 'disabled':''?>" href="<?= base_url() ?>shop-checkout">PASSER À LA CAISSE </a>
 								<!-- <a href="shop-checkout" class=""></a> -->
 							</div>
 						</div>
@@ -229,9 +232,16 @@
 				} else {
 					$("#livra").text("Choisir la destination de la livraison")
 					$("#final-price").text("")
+					$("#gover").select("cc")
 				}
 
 			}
 		})
+	})
+	$(".wa").click((e)=>{
+		if($("#gover").val() == "cc") {
+			e.preventDefault()
+			alert("SVP choisissez la destination !")
+		}
 	})
 </script>

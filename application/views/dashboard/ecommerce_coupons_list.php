@@ -25,27 +25,39 @@
                                         <th>Code coupon</th>
                                         <th>Nombre d'utilisation</th>
 										<th>Réduction</th>
-                                        <th>Date d'expiration</th>
+                                        <th>Expiration</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($coupons as $i => $coupon) { ?>
+                                    <?php foreach($collabss as $i => $coupon) { ?>
                                         <tr>
                                         <td><?= $coupon["id"] ?></td>
-                                        <td><?= $coupon["insta"] ?></td>
+                                        <td><?= $coupon["username"] ?></td>
                                         <td><?= $coupon["couponsCle"] ?></td>
                                         <td><?= $coupon["used"] ?></td>
 										<td><?= $coupon["reduction"] ?></td>
-                                        <td><?= $coupon["expiration"] ?></td>
+                                        <td><?php echo $coupon["expired"] == 1 ? "oui" :"non" ?></td>
                                         <td>
-                                            <a class="text-muted font-16" href="javascript:;" id="<?= "a$i" ?>"><i class="ti-trash"></i></a>
+                                            <a class="text-muted font-16" href="javascript:;" id="<?= "bbb$i" ?>"><i class="ti-thumb-up"></i></a>
+                                            <a class="text-muted font-16" href="javascript:;" id="<?= "aaa$i" ?>"><i class="ti-trash"></i></a>
                                         </td>
                                     </tr>
                                     <script>
-                                        $("<?= "#a$i" ?>").click(()=>{
+                                        $("<?= "#aaa$i" ?>").click(()=>{
                                             $.ajax({
                                                 url:"<?= base_url() ?>coupons/deleteCoupons/<?= $coupon["id"]?>",
+                                                method:"post",
+                                                success:(data)=>{
+                                                    location.reload()
+                                                }
+                                            })
+                                        })
+                                    </script>
+                                    <script>
+                                        $("<?= "#bbb$i" ?>").click(()=>{
+                                            $.ajax({
+                                                url:"<?= base_url() ?>coupons/expireCoupons/<?= $coupon["id"]?>",
                                                 method:"post",
                                                 success:(data)=>{
                                                     location.reload()

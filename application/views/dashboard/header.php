@@ -303,6 +303,9 @@
                             <span class="nav-label">Coupons</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
                             <li>
+                                <a href="<?= base_url() ?>dashboard/ecommerce_collabs">Liste des Collaborateurs</a>
+                            </li>
+                            <li>
                                 <a href="<?= base_url() ?>dashboard/ecommerce_coupons_list">Liste des coupons</a>
                             </li>
                             <li>

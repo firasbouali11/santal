@@ -1,3 +1,6 @@
+<?php $subtotale = 0;
+$orders = "";
+$nbr = ""; ?>
 <div role="main" class="main">
 
 	<div class="slider-container slider-container-height-550 rev_slider_wrapper bg-light-5">
@@ -19,6 +22,9 @@
 		<div class="container">
 			<?php if ($this->session->flashdata("coupons_applique")) { ?>
 				<p class="alert alert-success animated zoomIn"><?= $this->session->flashdata("coupons_applique") ?></p>
+			<?php } ?>
+			<?php if ($this->session->flashdata("coupons_expire")) { ?>
+				<p class="alert alert-danger animated zoomIn"><?= $this->session->flashdata("coupons_expire") ?></p>
 			<?php } ?>
 			<div class="row pb-4 mb-3">
 				<!-- <div class="col-md-6 mb-4 mb-md-0">
@@ -68,29 +74,6 @@
 						</div>
 					</div>
 				</div> -->
-				<div class="col-md-12">
-					<div class="accordion accordion-default accordion-toggle accordion-style-1" role="tablist">
-						<div class="card">
-							<div class="card-header accordion-header accordion-header-shrink" role="tab" id="shopCheckoutCoupon">
-								<span class="mb-0">
-									<a href="#" class="text-color-dark collapsed" data-toggle="collapse" data-target="#toggleShopCheckoutCoupon" aria-expanded="false" aria-controls="toggleShopCheckoutCoupon">Have a Coupon? <span class="text-color-primary">Click here to enter your code</span></a>
-								</span>
-							</div>
-							<div id="toggleShopCheckoutCoupon" class="accordion-body collapse" role="tabpanel" aria-labelledby="shopCheckoutCoupon">
-								<div class="card-body">
-									<form action="<?= base_url() ?>coupons/useCoupons" method="post">
-										<div class="input-group input-group-style-3 rounded">
-											<input type="text" value="<?= !empty($this->session->flashdata("coupons_applique")) ? explode(" ",$this->session->flashdata("coupons_applique"))[2] : '' ?>" name="coupon" class="form-control bg-light-5 border-0" placeholder="Enter Coupon Code..." aria-label="Enter Coupon Code" required>
-											<span class="input-group-btn bg-light-5 p-1">
-												<button class="btn btn-primary font-weight-semibold btn-h-3 rounded h-100" type="submit">APPLY</button>
-											</span>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 			<div class="row">
 				<div class="col">
@@ -103,7 +86,7 @@
 									<div class="form-group col-md-6">
 										<label class="text-color-dark font-weight-semibold" for="billing_name">NAME:</label>
 										<input type="text" value="" class="form-control line-height-1 bg-light-5" name="billing_name" id="billing_name" required>
-										<input type="hidden" name="couponn" value="<?= !empty($this->session->flashdata("coupons_applique")) ? explode(" ",$this->session->flashdata("coupons_applique"))[2] : '' ?>">
+										<input type="hidden" name="couponn" value="<?= !empty($this->session->flashdata("coupons_applique")) ? explode(" ", $this->session->flashdata("coupons_applique"))[2] : '' ?>">
 									</div>
 									<div class="form-group col-md-6">
 										<label class="text-color-dark font-weight-semibold" for="billing_last_name">LAST NAME:</label>
@@ -138,7 +121,31 @@
 										<input type="text" value="" class="form-control line-height-1 bg-light-5" name="billing_phone" id="billing_phone" required>
 									</div>
 								</div>
+								<h3 class="font-weight-bold text-4 mb-3">Paiement</h3>
+								<div id="shopPayment">
+									<div class="radio-custom">
+										<input type="radio" id="shopPaymentBankTransfer" name="paymentMethod" value="a la livraison" checked>
+										<label class="font-weight-semibold" for="shopPaymentBankTransfer">Paiement à la livraison</label>
+									</div>
+									<div class="radio-custom">
+										<input type="radio" id="shopPaymentCheque" name="paymentMethod" value="en ligne">
+										<label class="font-weight-semibold" for="shopPaymentCheque">Paiement en ligne</label>
+									</div>
+									<br>
+									<div class="reduction">
+										<i class="lnr lnr-diamond pr-1 text-5"></i>
+										<span> Vous recevrez une reduction de 5% si vous choisissez de payer en ligne !</span>
+									</div>
+									<input type="hidden" name="orders" value="<?= $orders ?>">
+
+								</div>
+								<div class="row">
+									<div class="col text-right">
+										<button class="mt-4 btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">ACHETER</button>
+									</div>
+								</div>
 							</div>
+							</form>
 							<div class="col-md-6 mb-4 mb-md-0">
 								<div class="row">
 									<div class="col-md-12">
@@ -157,9 +164,7 @@
 														</tr>
 													</thead>
 													<tbody>
-														<?php $subtotale = 0;
-														$orders = "";
-														$nbr = ""; ?>
+
 														<?php foreach ($panier as $product) { ?>
 															<tr class="cart-item">
 																<td class="product-thumbnail">
@@ -175,7 +180,7 @@
 																	<?= $product["nbrProduit"] ?>
 																</td>
 																<td class="product-subtotal">
-																	<span class="sub-total"><strong><?=  $product["price"] * $product["nbrProduit"] ?></strong></span>
+																	<span class="sub-total"><strong><?= $product["price"] * $product["nbrProduit"] ?></strong></span>
 																</td>
 															</tr>
 															<?php $subtotale += $product["price"] * $product["nbrProduit"];
@@ -229,6 +234,7 @@
 									<script>
 										var reg = /.[A-Za-z]+/
 										var x = document.cookie;
+										alert(x)
 										var livraison = x.split(";")[1].split("=")[1]
 										if (livraison.match(reg)) {
 											livraison = 0
@@ -238,18 +244,38 @@
 										$("#priceTotal").val((parseInt(livraison) + <?= $subtotale ?>))
 										$("#nbr").val("<?= $nbr ?>")
 									</script>
-									<?php 
-										if(isset($coupon)) {
-											$tot = $subtotale*(1-$coupon["reduction"]/100);
-											echo "<script>
-											var livraison = x.split(';')[2].split('=')[1]
+									<?php
+									if (isset($coupon)) {
+										$tot = $subtotale * (1 - $coupon["reduction"] / 100);
+										echo "<script>
+											var livraison = x.split(';')[1].split('=')[1]
 											$('#livrai').text(livraison + ' DT')
 											$('#totale').text((parseInt(livraison) + $tot ) + ' Dt    (reduction coupon)')
 											$('#priceTotal').val((parseInt(livraison) + $tot))
 											</script>";
-										} 
+									}else{
+										$tot = $subtotale ;
+										echo "<script>
+											var livraison = x.split(';')[1].split('=')[1]
+											$('#livrai').text(livraison + ' DT')
+											$('#totale').text((parseInt(livraison) + $tot ) + ' Dt')
+											$('#priceTotal').val((parseInt(livraison) + $tot))
+											</script>";
+									}
 									?>
-									<h3 class="font-weight-bold text-4 mb-3">Paiement</h3>
+									<form class="form-group col-md" action="<?= base_url() ?>coupons/useCoupons" method="post">
+										<label class="text-color-dark font-weight-semibold" for="billing_email">Vous avez un coupon ?</label>
+										<div class="input-group input-group-style-3 rounded">
+											<input id="couponval" type="text" value="<?= !empty($this->session->flashdata("coupons_applique")) ? explode(" ", $this->session->flashdata("coupons_applique"))[2] : '' ?>" name="coupon" class="form-control bg-light-5 border-0" placeholder="Enter Coupon Code..." aria-label="Enter Coupon Code" required>
+											<span class="input-group-btn bg-light-5 p-1">
+												<button class="btn btn-primary font-weight-semibold btn-h-3 rounded h-100" id="btncoup" type="submit">APPLY</button>
+											</span>
+										</div>
+									</form>
+									<br>
+									<br>
+									<br>
+									<!-- <h3 class="font-weight-bold text-4 mb-3">Paiement</h3>
 									<div id="shopPayment">
 										<div class="radio-custom">
 											<input type="radio" id="shopPaymentBankTransfer" name="paymentMethod" value="a la livraison" checked>
@@ -266,18 +292,33 @@
 										</div>
 										<input type="hidden" name="orders" value="<?= $orders ?>">
 
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
 
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col text-right">
 								<button class="mx-5 btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">ACHETER</button>
 							</div>
-						</div>
-					</form>
+						</div> -->
+					
 				</div>
 			</div>
 	</section>
+	<script>
+		// 	$("#btncoup").on("click", () => {
+		// 	$.ajax({
+		// 		url: "<?= base_url() ?>coupons/useCoupons",
+		// 		type: "post",
+		// 		data: {
+		// 			coupon: $("#couponval").val(),
+		// 		},
+		// 		success: (data) => {
+		// 			alert("fezjkfhzkje")
+
+		// 		}
+		// 	})
+		// })
+	</script>
 </div>

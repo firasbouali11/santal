@@ -24,17 +24,30 @@ class Users extends CI_Controller
             $remarque = $this->input->post("remarque");
 
             $verification_key = md5(rand());
-            $data = array(
-                "name" => $name,
-                "email" => $email,
-                "username" => $username,
-                "password" => $encPassword,
-                "phone" => $phone,
-                "lien_fb" => $lien_fb,
-                "lien_insta" => $lien_insta,
-                "remarque" => $remarque,
-                "verification_key" => $verification_key,
-            );
+            $data = NULL;
+            if(isset($lien_fb)){
+                $data = array(
+                    "name" => $name,
+                    "email" => $email,
+                    "username" => $username,
+                    "password" => $encPassword,
+                    "phone" => $phone,
+                    "lien_fb" => $lien_fb,
+                    "lien_insta" => $lien_insta,
+                    "remarque" => $remarque,
+                    "verification_key" => $verification_key,
+                    "collab" => 1
+                );
+            }else{
+                $data = array(
+                    "name" => $name,
+                    "email" => $email,
+                    "username" => $username,
+                    "password" => $encPassword,
+                    "phone" => $phone,
+                    "verification_key" => $verification_key,
+                );
+            }
             $this->users_model->register_user($data);
 
 
@@ -69,6 +82,7 @@ class Users extends CI_Controller
             $data["panier"] = $this->cart_model->get_cart();
             $data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
             $data['women_categories'] = $this->category_model->get_women_categories();
+            $data["contact"] = $this->contact_model->get_contact();
             $this->load->view("templates_site/header",$data);
             $this->load->view("shop-login");
             $this->load->view("templates_site/footer");

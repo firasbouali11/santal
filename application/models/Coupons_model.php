@@ -12,17 +12,17 @@ class Coupons_model extends CI_Model
 
     function add_coupons()
     {
-        $insta = $this->input->post("insta");
+        $insta = $this->input->post("id_user");
         $code = $this->input->post("code");
         $reduction = $this->input->post("reduction");
-        $expiration = $this->input->post("expiration");
+        // $expiration = $this->input->post("expiration");
 
 
         $data = array(
             "insta" => $insta,
             "couponsCle" => $code,
             "reduction" => $reduction,
-            "expiration" => $expiration,
+            // "expiration" => $expiration,
 
         );
         return $this->db->insert("coupons", $data);
@@ -39,12 +39,12 @@ class Coupons_model extends CI_Model
         $cp = $this->input->post("coupon");
         $query = $this->db->get_where("coupons", array("couponsCle" => $cp))->row_array();
         // return  $query["expiration"] > Date("Y-m-d");
-        if ($query["expiration"] < Date("Y-m-d")  || $query["expired"] == 1) {
-            $data = array(
-                "expired" => 1,
-            );
-            $this->db->where("id", $query["id"]);
-            $this->db->update("coupons", $data);
+        if ( $query["expired"] == 1) {
+            // $data = array(
+            //     "expired" => 1,
+            // );
+            // $this->db->where("id", $query["id"]);
+            // $this->db->update("coupons", $data);
             return false;
         } else {
 
@@ -55,13 +55,40 @@ class Coupons_model extends CI_Model
     function coupons_owner(){
         $this->db->where("insta",$this->session->userdata("userId"));
         $query = $this->db->get("coupons");
-        return $query->row_array();
+        return $query->result_array();
     }
 
     function get_coupons_owners(){
-        $this->db->join("user","user.id = coupons.insta");
-        $query = $this->db->get("coupons");
+        $this->db->join("coupons","user.id = coupons.insta");
+        $query = $this->db->get("user");
         return $query->result_array();
+    }
+
+    function get_collabs(){
+        $this->db->where("collab !=",NULL);
+        $query = $this->db->get("user");
+        return $query->result_array();
+    }
+    function approve_collab($id){
+        $data = array(
+            'collab' => 2
+        );
+        $this->db->where('id', $id);
+        $this->db->update('user', $data);
+
+        return true;
+    }
+    function delete_collab($id){
+        $data = array(
+            'collab' => 1,
+            // "lien_fb" =>    NULL,
+            // "lien_insta" =>    NULL,
+            // "remarque" =>    NULL,
+        );
+        $this->db->where('id', $id);
+        $this->db->update('user', $data);
+
+        return true;
     }
 
     function update_coupon()
@@ -86,5 +113,12 @@ class Coupons_model extends CI_Model
         );
         $this->db->where("id",$this->session->userdata("userId"));
         $this->db->update("user",$data);
+    }
+    function expire_coupons($id){
+        $data = array(
+            "expired" => 1,
+        );
+        $this->db->where("id",$id);
+        $this->db->update("coupons",$data);
     }
 }

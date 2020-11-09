@@ -69,8 +69,13 @@
 					</div>
 				</div>
 				<div class="col-lg-8 appear-animation" data-appear-animation="fadeInRightShorter">
-					<h3>Votre coupon: <?= $coupons_user["couponsCle"] ?></h3>
-					<h4 class="mb-5 mx-1">a été utilisé <?= $coupons_user["used"] ?> fois</h4>
+					<?php if($user_info[0]->collab == 2){ ?>
+					<?php foreach($coupons_user as $coup){ ?>
+					<h3 class="my-3">coupon: <?= $coup["couponsCle"] ?>     |      utilisé <?= $coup["used"] ?> fois       |      reduction : <?= $coup["reduction"] ?>%  </h3>
+					<?php }
+					} else{ ?>
+					<h1>Merci d'attendre l'affectation des coupons</h1>
+					<?php } ?>
 					<p>Modifier vos coordonnées</p>
 					<?= validation_errors('<div class="alert alert-danger">', "</div>") ?>
 					<form class="contact-form form-style-2" action="<?= base_url() ?>coupons/updateCollab" method="POST">
@@ -85,6 +90,7 @@
 								<span class="mail-error-message d-block"></span>
 							</div>
 						<?php } ?>
+
 						<div class="form-row">
 							<div class="form-group col-md-6">
 								<input type="url" value="<?= $user_info[0]->lien_fb ?>" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="lien_fb" id="lien_fb" placeholder="Name" required>
