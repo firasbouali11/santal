@@ -80,44 +80,44 @@ $nbr = ""; ?>
 					<form id="shopCheckout" action="<?= base_url() ?>facturation/addFacturation" method="post">
 						<div class="row mb-5">
 							<div class="col-md-6 mb-5 mb-md-0">
-								<h2 class="font-weight-bold mb-3">Billing Address</h2>
+								<h2 class="font-weight-bold mb-3">Adresse de facturation</h2>
 								<p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc.</p>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label class="text-color-dark font-weight-semibold" for="billing_name">NAME:</label>
+										<label class="text-color-dark font-weight-semibold" for="billing_name">PRENOM:</label>
 										<input type="text" value="" class="form-control line-height-1 bg-light-5" name="billing_name" id="billing_name" required>
 										<input type="hidden" name="couponn" value="<?= !empty($this->session->flashdata("coupons_applique")) ? explode(" ", $this->session->flashdata("coupons_applique"))[2] : '' ?>">
 									</div>
 									<div class="form-group col-md-6">
-										<label class="text-color-dark font-weight-semibold" for="billing_last_name">LAST NAME:</label>
+										<label class="text-color-dark font-weight-semibold" for="billing_last_name">NOM:</label>
 										<input type="text" value="" class="form-control line-height-1 bg-light-5" name="billing_last_name" id="billing_last_name" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col">
-										<label class="text-color-dark font-weight-semibold" for="billing_company">COMPANY NAME:</label>
+										<label class="text-color-dark font-weight-semibold" for="billing_company">NOM DE LA COMPAGNIE:</label>
 										<input type="text" value="" class="form-control line-height-1 bg-light-5" name="billing_company" id="billing_company" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col">
-										<label class="text-color-dark font-weight-semibold" for="billing_address">ADDRESS:</label>
+										<label class="text-color-dark font-weight-semibold" for="billing_address">ADDRESSE:</label>
 										<input type="text" value="" class="form-control line-height-1 bg-light-5" name="billing_address" id="billing_address" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col">
-										<label class="text-color-dark font-weight-semibold" for="billing_city">CITY / TOWN:</label>
+										<label class="text-color-dark font-weight-semibold" for="billing_city">VILLE:</label>
 										<input type="text" value="" class="form-control line-height-1 bg-light-5" name="billing_city" id="billing_city" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label class="text-color-dark font-weight-semibold" for="billing_email">EMAIL ADDRESS:</label>
+										<label class="text-color-dark font-weight-semibold" for="billing_email">ADRESSE EMAIL:</label>
 										<input type="text" value="" class="form-control line-height-1 bg-light-5" name="billing_email" id="billing_email" required>
 									</div>
 									<div class="form-group col-md-6">
-										<label class="text-color-dark font-weight-semibold" for="billing_phone">PHONE:</label>
+										<label class="text-color-dark font-weight-semibold" for="billing_phone">TELEPHONE:</label>
 										<input type="text" value="" class="form-control line-height-1 bg-light-5" name="billing_phone" id="billing_phone" required>
 									</div>
 								</div>
@@ -149,7 +149,7 @@ $nbr = ""; ?>
 							<div class="col-md-6 mb-4 mb-md-0">
 								<div class="row">
 									<div class="col-md-12">
-										<h3 class="font-weight-bold text-4">Your Orders</h3>
+										<h3 class="font-weight-bold text-4">Vos commandes</h3>
 										<div class="shop-cart">
 
 											<div class="table-responsive">
@@ -157,10 +157,10 @@ $nbr = ""; ?>
 													<thead>
 														<tr>
 															<th class="product-thumbnail"></th>
-															<th class="product-name"><strong>Product</strong></th>
-															<th class="product-price"><strong>Unit Price</strong></th>
-															<th class="product-quantity"><strong>Quantity</strong></th>
-															<th class="product-subtotal"><strong>Total</strong></th>
+															<th class="product-name"><strong>Produit</strong></th>
+															<th class="product-price"><strong>Prix unitaire</strong></th>
+															<th class="product-quantity"><strong>Quantité</strong></th>
+															<th class="product-subtotal"><strong>Totale</strong></th>
 														</tr>
 													</thead>
 													<tbody>
@@ -204,7 +204,7 @@ $nbr = ""; ?>
 											<tbody class="border-top-0">
 												<tr>
 													<td>
-														<span class="cart-total-label">Cart Subtotal</span>
+														<span class="cart-total-label">Sous totale du panier</span>
 													</td>
 													<td>
 														<span class="cart-total-value"><?= $subtotale ?> DT</span>
@@ -212,7 +212,7 @@ $nbr = ""; ?>
 												</tr>
 												<tr>
 													<td>
-														<span class="cart-total-label">Shipping</span>
+														<span class="cart-total-label">Livraison</span>
 													</td>
 													<td>
 														<span id="livrai" class="cart-total-value">Free Delivery</span>
@@ -220,7 +220,7 @@ $nbr = ""; ?>
 												</tr>
 												<tr class="border-bottom-0">
 													<td>
-														<span class="cart-total-label">Total</span>
+														<span class="cart-total-label">Totale</span>
 													</td>
 													<td>
 														<span id="totale" class="cart-total-value pink-color text-4">135 DT</span>
@@ -234,7 +234,6 @@ $nbr = ""; ?>
 									<script>
 										var reg = /.[A-Za-z]+/
 										var x = document.cookie;
-										alert(x)
 										var livraison = x.split(";")[1].split("=")[1]
 										if (livraison.match(reg)) {
 											livraison = 0
