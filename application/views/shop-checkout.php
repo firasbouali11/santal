@@ -233,8 +233,10 @@ $nbr = ""; ?>
 									<input type="hidden" name="nbr" id="nbr">
 									<script>
 										var reg = /.[A-Za-z]+/
-										var x = document.cookie;
-										var livraison = x.split(";")[1].split("=")[1]
+										// var x = document.cookie;
+										// alert(x)
+										// var livraison = x.split(";")[1].split("=")[1]
+										var livraison = localStorage.getItem("livraison")
 										if (livraison.match(reg)) {
 											livraison = 0
 										}
@@ -244,10 +246,10 @@ $nbr = ""; ?>
 										$("#nbr").val("<?= $nbr ?>")
 									</script>
 									<?php
-									if (isset($coupon)) {
+									if (!empty($coupon)) {
 										$tot = $subtotale * (1 - $coupon["reduction"] / 100);
 										echo "<script>
-											var livraison = x.split(';')[1].split('=')[1]
+											var livraison = localStorage.getItem('livraison')
 											$('#livrai').text(livraison + ' DT')
 											$('#totale').text((parseInt(livraison) + $tot ) + ' Dt    (reduction coupon)')
 											$('#priceTotal').val((parseInt(livraison) + $tot))
@@ -255,7 +257,7 @@ $nbr = ""; ?>
 									}else{
 										$tot = $subtotale ;
 										echo "<script>
-											var livraison = x.split(';')[1].split('=')[1]
+											var livraison = localStorage.getItem('livraison')
 											$('#livrai').text(livraison + ' DT')
 											$('#totale').text((parseInt(livraison) + $tot ) + ' Dt')
 											$('#priceTotal').val((parseInt(livraison) + $tot))
@@ -267,7 +269,7 @@ $nbr = ""; ?>
 										<div class="input-group input-group-style-3 rounded">
 											<input id="couponval" type="text" value="<?= !empty($this->session->flashdata("coupons_applique")) ? explode(" ", $this->session->flashdata("coupons_applique"))[2] : '' ?>" name="coupon" class="form-control bg-light-5 border-0" placeholder="Enter Coupon Code..." aria-label="Enter Coupon Code" required>
 											<span class="input-group-btn bg-light-5 p-1">
-												<button class="btn btn-primary font-weight-semibold btn-h-3 rounded h-100" id="btncoup" type="submit">APPLY</button>
+												<button class="btn btn-primary font-weight-semibold btn-h-3 rounded h-100" id="btncoup" type="submit">APPLIQUER</button>
 											</span>
 										</div>
 									</form>

@@ -227,7 +227,8 @@
 			success: (data) => {
 				if (data != "cc") {
 					$("#livra").text(data + " DT")
-					document.cookie = "livraison="+data;
+					// document.cookie = "livraison="+data;
+					localStorage.setItem("livraison",data)
 					$("#final-price").text((parseInt(data) + parseInt($(".a").text())) + " DT")
 				} else {
 					$("#livra").text("Choisir la destination de la livraison")

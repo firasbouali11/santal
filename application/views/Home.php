@@ -173,8 +173,6 @@
 									<!-- Crèmes soins
 									de visage -->
 								</h2>
-								<a href="<?= base_url() ?>produits/<?=$plan["product_id"] ?>" class="btn  btn-rounded font-weight-bold btn-h-2 btn-v-3">ACHETER
-									MAINTENANT</a>
 							</div>
 						</div>
 					</div>

@@ -39,12 +39,7 @@ class Coupons_model extends CI_Model
         $cp = $this->input->post("coupon");
         $query = $this->db->get_where("coupons", array("couponsCle" => $cp))->row_array();
         // return  $query["expiration"] > Date("Y-m-d");
-        if ( $query["expired"] == 1) {
-            // $data = array(
-            //     "expired" => 1,
-            // );
-            // $this->db->where("id", $query["id"]);
-            // $this->db->update("coupons", $data);
+        if ( $query["expired"] == 1 or !isset($query)) {
             return false;
         } else {
 
