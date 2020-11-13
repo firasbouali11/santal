@@ -154,6 +154,19 @@ class Users_model extends CI_Model
         }
     }
 
+    function check_current_password_admin($id, $enc_password)
+    {
+        $this->db->where('id', $id);
+        $this->db->where('password', $enc_password);
+        $query = $this->db->get('admin');
+
+        if (empty($query->row_array())) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     //update password
     public function update_password($id, $enc_password)
     {
@@ -167,7 +180,18 @@ class Users_model extends CI_Model
 
         return true;
     }
+    public function update_password_admin($id, $enc_password)
+    {
+        $data = array(
+            'password' => $enc_password
+        );
 
+        // Update user
+        $this->db->where('id', $id);
+        $this->db->update('admin', $data);
+
+        return true;
+    }
     public function get_user_orders($id)
     {
 

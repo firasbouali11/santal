@@ -41,4 +41,39 @@ class Admin extends CI_Controller
         $this->session->set_flashdata("admin_out", "Vous etes déconnecté");
     }
 
+
+    function edit_pass()
+    {
+        // check login
+        $id = $this->session->userdata("adminId");
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules("oldpassword", "oldpassword", "required|callback_check_password");
+        $this->form_validation->set_rules("password", "password", "required");
+        $this->form_validation->set_rules("password2", "confirmation password", "required|matches[password]");
+
+        if ($this->form_validation->run()) {
+            // Encrypt password
+            $enc_password = md5($this->input->post('password'));
+            $this->users_model->update_password_admin($id, $enc_password);
+            // Set message
+            $this->session->set_flashdata('password_updated_admin', 'Mot de passe mis à jour avec succès!');
+            redirect('dashboard/settings');
+        } else {
+            $this->session->set_flashdata('password_failed_admin', 'Mise à jour du mot de passe échouée!');
+            redirect('dashboard/settings');
+        }
+    }
+
+    // password_validation callbacks
+    function check_password($oldpassword)
+    {
+        $enc_password = md5($oldpassword);
+        $id = $this->session->userdata("adminId");
+        $this->form_validation->set_message("check_password_admin", "Mot de passe actuel incorrect!");
+        return $this->users_model->check_current_password_admin($id, $enc_password);
+    }
+    
+
 }
