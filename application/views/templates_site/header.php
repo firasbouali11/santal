@@ -152,7 +152,7 @@
 											<?php foreach ($women_categories as $categ) { ?>
 
 												<li class="dropdown dropdown-mega dropdown-mega-style-2">
-													<a class="dropdown-item dropdown-toggle" href="produits#femme_<?php echo $categ->nom_categorie; ?>">
+													<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>produits#femme_<?php echo $categ->nom_categorie; ?>">
 														<?php echo strtoupper($categ->nom_categorie); ?>
 													</a>
 												</li>

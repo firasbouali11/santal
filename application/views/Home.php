@@ -350,66 +350,23 @@
 				</div>
 			</div>
 			<div class="row justify-content-center">
+			<?php foreach ($women_categories as $categ) { ?>
 				<div class="col-8 col-md-5 col-lg-3 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
 					<a href="<?= base_url() ?>produits#femme_visage">
 						<div class="image-frame overlay overlay-show overlay-op-5 image-frame-style-1 image-frame-effect-2 image-frame-style-5">
 							<div class="image-frame-wrapper">
-								<img src="<?= base_url() ?>assets/img/shop/categorie-bg-1.jpg" class="img-fluid" alt="">
+								<img src="<?= base_url() ?>assets/img/shop/<?= $categ->photo ?>" class="img-fluid" alt="">
 								<div class="image-frame-info image-frame-info-show">
 									<div class="image-frame-info-box-style-1 background-pink">
 										<h3 style="color: #fff;font-weight: 700;" class=" text-uppercase text-1 m-0 p-0">
-											Visage</h3>
+											<?= $categ->nom_categorie ?></h3>
 									</div>
 								</div>
 							</div>
 						</div>
 					</a>
 				</div>
-				<div class="col-8 col-md-5 col-lg-3 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInLeftShorter">
-					<a href="<?= base_url() ?>produits#femme_cheveux">
-						<div class="image-frame overlay overlay-show overlay-op-5 image-frame-style-1 image-frame-effect-2 image-frame-style-5">
-							<div class="image-frame-wrapper">
-								<img src="<?= base_url() ?>assets/img/shop/categorie-bg-2.jpg" class="img-fluid" alt="">
-								<div class="image-frame-info image-frame-info-show">
-									<div class="image-frame-info-box-style-1 background-pink">
-										<h3 style="color: #fff;font-weight: 700;" class="text-uppercase text-1 m-0 p-0">
-											Cheveux</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-8 col-md-5 col-lg-3 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInRightShorter">
-					<a href="<?= base_url() ?>produits#femme_deodorants">
-						<div class="image-frame overlay overlay-show overlay-op-5 image-frame-style-1 image-frame-effect-2 image-frame-style-5">
-							<div class="image-frame-wrapper">
-								<img src="<?= base_url() ?>assets/img/shop/categorie-bg-3.jpg" class="img-fluid" alt="">
-								<div class="image-frame-info image-frame-info-show">
-									<div class="image-frame-info-box-style-1 background-pink">
-										<h3 style="color: #fff;font-weight: 700;" class=" text-uppercase text-1 m-0 p-0">
-											Corps et bain</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-8 col-md-5 col-lg-3 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200">
-					<a href="<?= base_url() ?>produits#femme_parfums">
-						<div class="image-frame overlay overlay-show overlay-op-5 image-frame-style-1 image-frame-effect-2 image-frame-style-5">
-							<div class="image-frame-wrapper">
-								<img src="<?= base_url() ?>assets/img/shop/categorie-bg-4.jpg" class="img-fluid" alt="">
-								<div class="image-frame-info image-frame-info-show">
-									<div class="image-frame-info-box-style-1 background-pink">
-										<h3 style="color: #fff;font-weight: 700;" class=" text-uppercase text-1 m-0 p-0">
-											Parfums</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
+			<?php } ?>
 			</div>
 		</div>
 	</section>

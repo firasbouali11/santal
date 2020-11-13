@@ -19,12 +19,13 @@ class Category_model extends CI_Model
     return $query->result();
   }
 
-  public function create_category()
+  public function create_category($photo)
   {
 
     $data  = array(
       'nom_categorie' => $this->input->post('category'),
-      'type' => $this->input->post('type')
+      'type' => $this->input->post('type'),
+      "photo" => $photo
     );
 
     return $this->db->insert('categories', $data);

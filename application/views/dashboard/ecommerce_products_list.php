@@ -81,28 +81,28 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6 form-group mb-4">
-                                        <label>Produit</label>
+                                        <!-- <label>Produit</label>
                                         <div>
                                             <select class="selectpicker show-tick form-control" name="product_id" title="Sélectionner" data-style="btn-solid">
                                                 <?php foreach ($all_products as $product) { ?>
                                                     <option <?= $product->id == $plan["product_id"] ? "selected":"" ?>  value='<?= $product->id ?>'><?= $product->title ?></option>
                                                 <?php } ?>
                                             </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 form-group mb-4">
+                                        </div> -->
                                         <label>Cover</label>
                                         <div>
-                                            <input name="userfile" class="form-control form-control-solid" type="file" placeholder="Réduction">
+                                            <input name="userfile" class="cover form-control form-control-solid" type="file" placeholder="Réduction">
                                             <input type="hidden" name="update_cover" value="<?= $plan["cover"] ?>">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-sm-12 form-group mb-4" >
+                                    <img class="www" width="350" height="350" src="<?= base_url() ?>assets/img/shop/<?= $plan["cover"] ?>" alt="cover">
+                                    </div>
+                                </div>
                                 <div class="text-right">
                                     <button type="submit" class="btn btn-primary btn-air mr-2">Save</button>
-                                    <!-- <button class="btn btn-secondary">Annuler</button> -->
                                 </div>
                             </form>
                         </div>
@@ -111,5 +111,19 @@
             </div>
         </div>
     </div>
+    <script>
+        function encodeImgtoBase64(element) {
+            var img = element.files[0];
+            var reader = new FileReader();
+            reader.onloadend = function() {
+            // $("#convertImg").attr("href",reader.result);
+                $(".www").attr("src",reader.result)
+            }
+            reader.readAsDataURL(img);
+        }
+        $(".cover").change(()=>{
+            encodeImgtoBase64($(".cover")[0])
+        })
+    </script>
 
     <!-- END PAGE CONTENT-->

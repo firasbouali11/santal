@@ -7,7 +7,7 @@
                 <div class="row">
 
                     <div class="col-lg-8">
-                        <form action="<?= base_url() ?>category/addCategory" method="post">
+                        <form action="<?= base_url() ?>category/addCategory" method="post" enctype="multipart/form-data"> 
 
                             <div class="row">
                                 <div class="col-sm-6 form-group mb-4">
@@ -23,7 +23,14 @@
                                         </select>
                                     </div>
                                 </div>
-
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 form-group mb-4">
+                                <label>Cover</label>
+                                    <div>
+                                        <input name="userfile" class="cover form-control form-control-solid" type="file" placeholder="Réduction">
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="text-right">
