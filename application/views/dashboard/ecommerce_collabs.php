@@ -51,6 +51,7 @@
 
                                         <a class="text-light mr-2 font-16"  id=<?= "aww$i" ?>><i class="ti-heart"></i></a>
                                         <a class="text-light font-16"  id=<?= "bww$i" ?>><i class="ti-trash"></i></a>
+                                        <a class="text-muted font-16" href="<?= base_url() ?>dashboard/profile/<?= $collab["id"] ?>" ><i class="la la-cloud-upload"></i></a>
                                     </td>
                                 </tr>
                                 <script>

@@ -47,7 +47,7 @@
 						<i class="fas fa-star text-color-default mr-1"></i>
 					<?php } ?>
 				</div>
-				<span class="price font-primary text-4"><strong class="text-color-dark"><?= $product["price"] ?> DT</strong></span>
+				<span class="price font-primary text-4"><strong class="text-color-dark"><?= $product["price"] *(1-$product["reduction"]/100)?> DT</strong></span>
 				<!-- <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">160 DT</strong></span> -->
 				<p class="mt-4"><?= $product["description"] ?></p>
 				<hr class="my-4">
@@ -133,7 +133,7 @@
 								<li>
 									<div class="comment">
 										<div class="d-none d-sm-block">
-											<img class="avatar rounded-circle" alt="" src="<?= base_url() ?>assets/img/authors/author-2.jpg">
+											<img class="avatar rounded-circle" alt="" src="<?= base_url() ?>assets/img/authors/aa.png">
 										</div>
 										<div class="comment-block">
 											<span class="comment-by">

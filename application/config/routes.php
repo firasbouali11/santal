@@ -8,6 +8,7 @@ $route["produits/searchProduct"] = "products/searchProduct";
 $route["produits/(:any)"] = "main/single_product/$1";
 $route["dashboard/product/(:any)"] = "dashboardMain/product/$1";
 $route["dashboard/order/(:any)"] = "dashboardMain/order_details/$1";
+$route["dashboard/profile/(:any)"] = "dashboardMain/profile_collaborator/$1";
 $route["dashboard/category/(:any)"] = "dashboardMain/edit_category/$1";
 $route["dashboard/admin"] = "dashboardMain/admin";
 $route["dashboard/(:any)"] = "dashboardMain/home/$1";

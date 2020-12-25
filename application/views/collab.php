@@ -5,7 +5,7 @@
 				<li class="slide-overlay slide-overlay-level-8" data-transition="fade">
 					<img src="<?= base_url() ?>assets/img/slides/headers.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-duration="12000" data-ease="Linear.easeNone" class="rev-slidebg ">
 
-					<p class="tp-caption font-weight-bold layer-letter-spacing-5 text-white" data-frames='[{"delay":0,"speed":1500,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"opacity:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="center" data-y="center" data-voffset="['0','-40','-40','-40']" data-fontsize="['54','54','54','47']" data-lineheight="['80','60','60','41']">Profile Collaborateur</p>
+					<p class="tp-caption font-weight-bold layer-letter-spacing-5 text-white" data-frames='[{"delay":0,"speed":1500,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"opacity:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="center" data-y="center" data-voffset="['0','-40','-40','-40']" data-fontsize="['54','54','54','47']" data-lineheight="['80','60','60','41']">Profil Collaborateur</p>
 
 
 				</li>
@@ -27,6 +27,9 @@
 			<div class="row pt-5">
 				<div class="col-lg-4">
 					<div class="row">
+					<div class="col-12 col-md-4 col-lg-12 mb-lg-4 appear-animation" data-appear-animation="fadeInLeftShorter">
+							<img src="<?= base_url() ?>assets/img/authors/aa.png" alt="profile-image">
+						</div>
 						<div class="col-12 col-md-4 col-lg-12 mb-lg-4 appear-animation" data-appear-animation="fadeInLeftShorter">
 							<div class="icon-box icon-box-style-1">
 								<div class="icon-box-icon">
@@ -34,7 +37,7 @@
 								</div>
 								<div class="icon-box-info mt-1">
 									<div class="icon-box-info-title">
-										<h3 class="font-weight-bold text-4 mb-0">Profile</h3>
+										<h3 class="font-weight-bold text-4 mb-0">Profil</h3>
 									</div>
 									<p><?= $user_info[0]->username ?></p>
 								</div>
@@ -69,13 +72,43 @@
 					</div>
 				</div>
 				<div class="col-lg-8 appear-animation" data-appear-animation="fadeInRightShorter">
-					<?php if($user_info[0]->collab == 2){ ?>
-					<?php foreach($coupons_user as $coup){ ?>
-					<h3 class="my-3">coupon: <?= $coup["couponsCle"] ?>     |      utilisé <?= $coup["used"] ?> fois       |      reduction : <?= $coup["reduction"] ?>%  </h3>
-					<?php }
-					} else{ ?>
-					<h1>Merci d'attendre l'affectation des coupons</h1>
+					<?php if ($user_info[0]->collab == 2) { ?>
+							<div class="col shop-cart">
+								<div class="table-responsive">
+									<table class="shop-cart-table w-100">
+										<thead>
+
+											<tr>
+												<th class="product-name">
+													<strong>Coupon</strong></th>
+												<th class="product-price"><strong>Nombre d'utilisation</strong></th>
+												<th class="product-subtotal">
+													<strong>Reduction</strong></th>
+											</tr>
+
+										</thead>
+										<tbody>
+
+											<?php foreach ($coupons_user as $coup) { ?>
+
+												<tr class="cart-item">
+													<td><strong><?php echo $coup["couponsCle"]; ?></strong></td>
+													<td><strong><?php echo $coup["used"]; ?></strong></td>
+													<td><span class="sub-total"><strong><?php echo $coup["reduction"]; ?>%</strong></span></td>
+												</tr>
+
+											<?php } ?>
+
+										</tbody>
+									</table>
+								</div>
+
+							</div>
+						<?php 
+					} else { ?>
+						<h1>Merci d'attendre l'affectation des coupons</h1>
 					<?php } ?>
+					<br><br>
 					<p>Modifier vos coordonnées</p>
 					<?= validation_errors('<div class="alert alert-danger">', "</div>") ?>
 					<form class="contact-form form-style-2" action="<?= base_url() ?>coupons/updateCollab" method="POST">

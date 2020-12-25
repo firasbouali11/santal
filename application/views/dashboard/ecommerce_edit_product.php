@@ -29,7 +29,7 @@
                                 <input value="<?= $product["title"] ?>" class="form-control form-control-solid" name="productTitle" type="text" placeholder="Nom du produit">
                             </div>
                             <div class="row">
-                                <div class="col-sm-6 form-group mb-4">
+                                <div class="col-sm-4 form-group mb-4">
                                     <label>Catégorie</label>
                                     <div>
                                         <select class="selectpicker show-tick form-control" name="productCategory" title="Sélectionner" data-style="btn-solid">
@@ -46,9 +46,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 form-group mb-4">
+                                <div class="col-sm-4 form-group mb-4">
                                     <label>Référence</label>
                                     <input value="<?= $product["reference"] ?>" name="reference" class="form-control form-control-solid" type="text" placeholder="Numéro de référence">
+                                </div>
+                                <div class="col-sm-4 form-group mb-4">
+                                    <label>Reduction</label>
+                                    <input value="<?= $product["reduction"] ?>" name="reduction" class="form-control form-control-solid" type="text" placeholder="reduction">
                                 </div>
                             </div>
                             <div class="row">

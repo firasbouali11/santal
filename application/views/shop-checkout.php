@@ -17,7 +17,7 @@ $nbr = ""; ?>
 		</div>
 	</div>
 	<br><br>
-
+	<?php $tot = 0 ?>
 	<section class="section">
 		<div class="container">
 			<?php if ($this->session->flashdata("coupons_applique")) { ?>
@@ -134,9 +134,11 @@ $nbr = ""; ?>
 									<br>
 									<div class="reduction">
 										<i class="lnr lnr-diamond pr-1 text-5"></i>
-										<span> Vous recevrez une reduction de 5% si vous choisissez de payer en ligne !</span>
+										<span style=<?= $cr[0]["compare"] == NULL ? "display:hidden":"display:inline" ?>>Vous aurez une reduction de <?= $cr[0]["reduction"] ?>% si vous achetez avec une somme totale supérieur à <?= $cr[0]["compare"]  ?> DT</span>
+
 									</div>
-									<input type="hidden" name="orders" value="<?= $orders ?>">
+									<p style="<?= $cr[0]["compare"] == NULL ? "display:hidden":"display:inline" ?>;font-size:30px" id="red"></p>
+									<input type="hidden" name="orders" id="orders" value="<?= $orders ?>">
 
 								</div>
 								<div class="row">
@@ -168,22 +170,22 @@ $nbr = ""; ?>
 														<?php foreach ($panier as $product) { ?>
 															<tr class="cart-item">
 																<td class="product-thumbnail">
-																	<img src="img/products/product-1.jpg" class="img-fluid" width="67" alt="" />
+																	<img src="<?= base_url() ?>assets/img/products/<?= explode(":",$product["images"])[0] ?>" class="img-fluid" width="67" alt="" />
 																</td>
 																<td class="product-name">
 																	<a href="shop-product-detail-right-sidebar.html"><?= $product["title"] ?></a>
 																</td>
 																<td class="product-price">
-																	<span class="unit-price"><?= $product["price"] ?></span>
+																	<span class="unit-price"><?= $product["price"] *(1-$product["reduction"]/100)?></span>
 																</td>
 																<td class="product-quantity">
 																	<?= $product["nbrProduit"] ?>
 																</td>
 																<td class="product-subtotal">
-																	<span class="sub-total"><strong><?= $product["price"] * $product["nbrProduit"] ?></strong></span>
+																	<span class="sub-total"><strong><?= $product["price"]*(1-$product["reduction"]/100) * $product["nbrProduit"] ?></strong></span>
 																</td>
 															</tr>
-															<?php $subtotale += $product["price"] * $product["nbrProduit"];
+															<?php $subtotale += $product["price"]*(1-$product["reduction"]/100) * $product["nbrProduit"];
 															$orders .= $product["id"] . ":";
 															$nbr .= $product["nbrProduit"] . ":";
 															?>
@@ -198,7 +200,7 @@ $nbr = ""; ?>
 								</div>
 								<br>
 								<div class="col-md-12">
-									<h3 class="font-weight-bold text-4 mb-3">Cart Totals</h3>
+									<h3 class="font-weight-bold text-4 mb-3">Totale du Panier</h3>
 									<div class="table-responsive mb-4">
 										<table class="cart-totals w-100">
 											<tbody class="border-top-0">
@@ -244,6 +246,7 @@ $nbr = ""; ?>
 										$("#totale").text((parseInt(livraison) + <?= $subtotale  ?>) + " Dt")
 										$("#priceTotal").val((parseInt(livraison) + <?= $subtotale ?>))
 										$("#nbr").val("<?= $nbr ?>")
+										$("#orders").val("<?= $orders ?>")
 									</script>
 									<?php
 									if (!empty($coupon)) {
@@ -308,18 +311,8 @@ $nbr = ""; ?>
 			</div>
 	</section>
 	<script>
-		// 	$("#btncoup").on("click", () => {
-		// 	$.ajax({
-		// 		url: "<?= base_url() ?>coupons/useCoupons",
-		// 		type: "post",
-		// 		data: {
-		// 			coupon: $("#couponval").val(),
-		// 		},
-		// 		success: (data) => {
-		// 			alert("fezjkfhzkje")
-
-		// 		}
-		// 	})
-		// })
+		$("#billing_city").val(localStorage.getItem("liv_place"))
+		var somme = (parseInt(livraison) +<?= $tot ?>)*(1-<?=(int)$cr[0]["reduction"] ?>/100)
+		if (somme > <?= (int) $cr[0]["compare"] ?>) $("#red").text("Somme à payée: "+somme +"DT")
 	</script>
 </div>

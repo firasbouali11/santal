@@ -92,5 +92,79 @@
             
         </div>
     </div>
+    <div class="page-content fade-in-up">
+        <div class="ibox">
+            <div class="ibox-body">
+                <h5 class="font-strong mb-5">Qui somme nous</h5>
+                <div class="row">
+
+                    <div class="col-lg-8">
+                        <form action="<?= base_url() ?>admin/qui_sommes_nous" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-sm-12 form-group mb-4">
+                                    <label>Titre du partie</label>
+                                    <div>
+                                        <input name="title" class="form-control form-control-solid" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 form-group mb-4">
+                                    <label>Les Photos</label>
+                                    <input name="userfile[]" class="form-control form-control-solid" type="file" multiple>
+                                </div>
+                                <div class="col-sm-12 form-group mb-4">
+                                    <label>Les Noms(séparé par des "/")</label>
+                                    <input name="names" class="form-control form-control-solid" type="text">
+                                </div>
+                                <div class="col-sm-12 form-group mb-4">
+                                    <label>Les Occupations(séparé par des "/")</label>
+                                    <input name="occupations" class="form-control form-control-solid" type="text">
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary btn-air mr-2">Save</button>
+                                <!-- <button class="btn btn-secondary">Annuler</button> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    <div class="page-content fade-in-up">
+        <div class="ibox">
+            <div class="ibox-body">
+                <h5 class="font-strong mb-5">Qui somme nous</h5>
+                <div class="row">
+
+                    <div class="col-lg-8">
+                        <form action="<?= base_url() ?>admin/update_compare_and_reduction" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-sm-6 form-group mb-4">
+                                    <label>Valeur de reduction</label>
+                                    <div>
+                                        <input name="reduction" value="<?= $cr[0]["reduction"] ?>" class="form-control form-control-solid" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 form-group mb-4">
+                                    <label>Valeur de comapraison</label>
+                                    <div>
+                                        <input name="comparaison" value="<?= $cr[0]["compare"] ?>" class="form-control form-control-solid" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary btn-air mr-2">Save</button>
+                                <!-- <button class="btn btn-secondary">Annuler</button> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
     <!-- END PAGE CONTENT-->
    

@@ -180,11 +180,15 @@ class Product_model extends CI_Model
         $type = explode(" ", $this->input->post("productCategory"))[0];
         $category = explode(" ", $this->input->post("productCategory"))[1];
         $reference = $this->input->post("reference");
+        $reduction = $this->input->post("reduction");
         $price = $this->input->post("price");
         $rate = $this->input->post("eval");
         $qty = $this->input->post("qty");
         $description = $this->input->post("description");
 
+        if($reduction == 0){
+            $reduction = NULL;
+        }
         $data = array(
             "title" => $title,
             "type " => $type,
@@ -194,7 +198,8 @@ class Product_model extends CI_Model
             "price" => $price,
             "quantity" => $qty,
             "reference" => $reference,
-            "images" => $images
+            "images" => $images,
+            "reduction" => $reduction
 
         );
         $this->db->where("id", $id);

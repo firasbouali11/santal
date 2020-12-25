@@ -62,6 +62,8 @@ class Main extends CI_Controller
 			$data["panier"] = $this->cart_model->get_cart();
 			$data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
 			$data["destinations"] = $this->cart_model->get_destinations();
+			$data["societe"] = $this->users_model->get_societe();
+			$data["cr"] = $this->facturation_model->get_compare_and_reduction();
 
 			$this->load->view("templates_site/header",$data);
 			$this->load->view($page, $data);

@@ -181,18 +181,21 @@
 						<span class="top-sub-title text-color-primary d-block appear-animation" data-appear-animation="maskUp"></span>
 					</div>
 					<div class="overflow-hidden">
-						<h2 class="font-weight-bold appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">Notre Equipe</h2>
+						<h2 class="font-weight-bold appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200"><?= $societe[0]["title"] ?></h2>
 					</div>
 				</div>
 			</div>
 			<div class="row appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
 				<div class="col">
+					
 					<div class="owl-carousel owl-theme dots-style-1 nav-style-3" data-plugin-options="{'responsive': {'0': {'items': 1}, '576': {'items': 1}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 4}}, 'dots': true, 'nav': false, 'loop': false, 'navtext': [], 'margin': 30}">
+					<?php $count = count(explode(":", $societe[0]["photos"])) ?>
+					<?php for ($i = 0; $i < $count; $i++) { ?>
 						<div>
 							<div class="text-center mb-2">
 								<div class="image-frame image-frame-style-1 image-frame-effect-1 mb-4">
 									<span class="image-frame-wrapper">
-										<img src="<?= base_url() ?>assets/img/authors/author-1.jpg" class="img-fluid" alt="">
+										<img src="<?= base_url() ?>assets/img/authors/<?= explode(":", $societe[0]["photos"])[$i] ?>" class="img-fluid" alt="">
 										<span class="image-frame-inner-border"></span>
 										<span class="image-frame-action image-frame-action-effect-1 image-frame-action-sm">
 											<a href="ajax/team-member-detail.html" class="simple-ajax-popup">
@@ -208,106 +211,12 @@
 										</span>
 									</span>
 								</div>
-								<h3 class="font-weight-bold text-4 mb-0">John Doe</h3>
-								<span class="text-1">FOUNDATEUR</span>
+								<h3 class="font-weight-bold text-4 mb-0"><?= explode("/", $societe[0]["names"])[$i]?></h3>
+								<span class="text-1"><?= explode("/", $societe[0]["occupations"])[$i]?></span>
 							</div>
 						</div>
-						<div>
-							<div class="text-center mb-2">
-								<div class="image-frame image-frame-style-1 image-frame-effect-1 mb-4">
-									<span class="image-frame-wrapper">
-										<img src="<?= base_url() ?>assets/img/authors/author-2.jpg" class="img-fluid" alt="">
-										<span class="image-frame-inner-border"></span>
-										<span class="image-frame-action image-frame-action-effect-1 image-frame-action-sm">
-											<a href="ajax/team-member-detail.html" class="simple-ajax-popup">
-												<span class="image-frame-action-icon">
-													<i class="lnr lnr-magnifier text-color-light"></i>
-												</span>
-											</a>
-											<a href="about-me.html">
-												<span class="image-frame-action-icon">
-													<i class="lnr lnr-link text-color-light"></i>
-												</span>
-											</a>
-										</span>
-									</span>
-								</div>
-								<h3 class="font-weight-bold text-4 mb-0">Bob Doe</h3>
-								<span class="text-1">CO-FOUNDATEUR</span>
-							</div>
-						</div>
-						<div>
-							<div class="text-center mb-2">
-								<div class="image-frame image-frame-style-1 image-frame-effect-1 mb-4">
-									<span class="image-frame-wrapper">
-										<img src="<?= base_url() ?>assets/img/authors/author-3.jpg" class="img-fluid" alt="">
-										<span class="image-frame-inner-border"></span>
-										<span class="image-frame-action image-frame-action-effect-1 image-frame-action-sm">
-											<a href="ajax/team-member-detail.html" class="simple-ajax-popup">
-												<span class="image-frame-action-icon">
-													<i class="lnr lnr-magnifier text-color-light"></i>
-												</span>
-											</a>
-											<a href="about-me.html">
-												<span class="image-frame-action-icon">
-													<i class="lnr lnr-link text-color-light"></i>
-												</span>
-											</a>
-										</span>
-									</span>
-								</div>
-								<h3 class="font-weight-bold text-4 mb-0">Jessica Doe</h3>
-								<span class="text-1">VENDUESE</span>
-							</div>
-						</div>
-						<div>
-							<div class="text-center mb-2">
-								<div class="image-frame image-frame-style-1 image-frame-effect-1 mb-4">
-									<span class="image-frame-wrapper">
-										<img src="<?= base_url() ?>assets/img/authors/author-4.jpg" class="img-fluid" alt="">
-										<span class="image-frame-inner-border"></span>
-										<span class="image-frame-action image-frame-action-effect-1 image-frame-action-sm">
-											<a href="ajax/team-member-detail.html" class="simple-ajax-popup">
-												<span class="image-frame-action-icon">
-													<i class="lnr lnr-magnifier text-color-light"></i>
-												</span>
-											</a>
-											<a href="about-me.html">
-												<span class="image-frame-action-icon">
-													<i class="lnr lnr-link text-color-light"></i>
-												</span>
-											</a>
-										</span>
-									</span>
-								</div>
-								<h3 class="font-weight-bold text-4 mb-0">Alice Doe</h3>
-								<span class="text-1">VENDEUSE</span>
-							</div>
-						</div>
-						<div>
-							<div class="text-center mb-2">
-								<div class="image-frame image-frame-style-1 image-frame-effect-1 mb-4">
-									<span class="image-frame-wrapper">
-										<img src="<?= base_url() ?>assets/img/authors/author-5.jpg" class="img-fluid" alt="">
-										<span class="image-frame-inner-border"></span>
-										<span class="image-frame-action image-frame-action-effect-1 image-frame-action-sm">
-											<a href="ajax/team-member-detail.html" class="simple-ajax-popup">
-												<span class="image-frame-action-icon">
-													<i class="lnr lnr-magnifier text-color-light"></i>
-												</span>
-											</a>
-											<a href="about-me.html">
-												<span class="image-frame-action-icon">
-													<i class="lnr lnr-link text-color-light"></i>
-												</span>
-											</a>
-										</span>
-									</span>
-								</div>
-								<h3 class="font-weight-bold text-4 mb-0">WILL DOE</h3>
-								<span class="text-1">MARKETING</span>
-							</div>
-						</div>
+						<?php } ?>
+						
 					</div>
 				</div>
 			</div>

@@ -34,8 +34,20 @@ class Contact extends CI_Controller
             }
 
         }else{
-            $this->load->view("templates_site/header");
-            $this->load->view("contact-us");
+            $data["user_info"] = $this->users_model->get_current_user($this->session->userdata("userId"));
+			$data["testimonies"] = $this->contact_model->get_testimonies();
+			$data['women_categories'] = $this->category_model->get_women_categories();
+			$data['all_products'] = $this->product_model->get_all_products();
+			$data['new_products'] = $this->product_model->get_new_products();
+			$data['top_products'] = $this->product_model->get_top_rated_products();
+			$data['popular_products'] = $this->product_model->get_popular_products();
+			$data['best_products'] = $this->product_model->get_best_selling_products();
+			$data["contact"] = $this->contact_model->get_contact();
+			$data["panier"] = $this->cart_model->get_cart();
+			$data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
+			$data["destinations"] = $this->cart_model->get_destinations();
+            $this->load->view("templates_site/header",$data);
+            $this->load->view("contact-us",$data);
             $this->load->view("templates_site/footer");
         }
     }

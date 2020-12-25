@@ -46,7 +46,11 @@
 												<a href="<?= base_url() ?>produits/<?= $produit['id'] ?>"><?= $produit["title"] ?>e</a>
 											</td>
 											<td class="product-price">
-												<span class="unit-price"><?= $produit["price"] ?> DT</span>
+												<?php if($produit["reduction"] == NULL){ ?>
+													<span class="unit-price"><?= $produit["price"] ?> DT</span>
+												<?php }else{ ?>
+													<span class="unit-price"><?= $produit["price"]*(1-$produit["reduction"]/100) ?> DT</span>
+												<?php } ?>
 											</td>
 											<td class="product-quantity">
 												<div class="quantity">
@@ -56,7 +60,7 @@
 												</div>
 											</td>
 											<td class="product-subtotal">
-												<span class="sub-total"><strong id="<?= $produit["id"] ?>"><?= $produit["price"] * $produit["nbrProduit"] ?> DT</strong></span>
+												<span class="sub-total"><strong id="<?= $produit["id"] ?>"><?= $produit["price"]*(1-$produit["reduction"]/100) * $produit["nbrProduit"] ?> DT</strong></span>
 											</td>
 											<script>
 												$("#minus<?= $produit["id"] ?>").on("click", () => {
@@ -65,7 +69,7 @@
 														qty = 0
 														$("#qty<?= $produit["id"] ?>").val(1)
 													}
-													$("#<?= $produit["id"] ?>").text((qty * <?= $produit["price"] ?>) + " DT")
+													$("#<?= $produit["id"] ?>").text((qty * <?= $produit["price"]*(1-$produit["reduction"]/100) ?>) + " DT")
 													$.ajax({
 														type: "post",
 														url: "<?= base_url() ?>cart/updateCart",
@@ -86,7 +90,7 @@
 												})
 												$("#plus<?= $produit["id"] ?>").on("click", () => {
 													qty = parseInt($("#qty<?= $produit["id"] ?>").val()) + 1
-													$("#<?= $produit["id"] ?>").text((qty * <?= $produit["price"] ?>) + " DT")
+													$("#<?= $produit["id"] ?>").text((qty * <?= $produit["price"]*(1-$produit["reduction"]/100) ?>) + " DT")
 													$.ajax({
 														type: "post",
 														url: "<?= base_url() ?>cart/updateCart",
@@ -154,7 +158,7 @@
 									<select id="gover" name="destination" class="form-control bg-light-5 text-color-dark border-0" aria-label="Choose a country" required>
 										<option value="cc">Choisir la destination de la livraison...</option>
 										<?php foreach ($destinations as $destination) { ?>
-											<option value="<?= $destination["prix"] ?>"><?= $destination["governorat"] ?></option>
+											<option value="<?= $destination["prix"].';'.$destination["governorat"] ?>"><?= $destination["governorat"] ?></option>
 										<?php } ?>
 
 									</select>
@@ -169,7 +173,7 @@
 								<input type="text" value="" class="form-control bg-light-5 border-0" placeholder="Code postal / ZIP" required>
 							</div>
 						</div> -->
-						<p>Vous aurez une reduction de 5% si vous choisissez au checkout de payer en ligne !</p>
+						<p style=<?= $cr[0]["compare"] == NULL ? "display:hidden":"display:block" ?>>Vous aurez une reduction de <?= $cr[0]["reduction"] ?>% si vous achetez avec une somme totale supérieur à <?= $cr[0]["compare"]  ?> DT</p>
 						<div class="form-row">
 							<div class="col">
 								<a class="btn btn-rounded font-weight-bold btn-h-2 btn-v-3 wa <?= !$this->session->userdata("logged_in") ? 'disabled':''?>" href="<?= base_url() ?>shop-checkout">PASSER À LA CAISSE </a>
@@ -224,11 +228,14 @@
 			data: {
 				destination: $("#gover").val(),
 			},
-			success: (data) => {
+			success: (resp) => {
+				data = resp.split(";")[0]
+				livraison = resp.split(";")[1]
 				if (data != "cc") {
 					$("#livra").text(data + " DT")
 					// document.cookie = "livraison="+data;
 					localStorage.setItem("livraison",data)
+					localStorage.setItem("liv_place",livraison)
 					$("#final-price").text((parseInt(data) + parseInt($(".a").text())) + " DT")
 				} else {
 					$("#livra").text("Choisir la destination de la livraison")

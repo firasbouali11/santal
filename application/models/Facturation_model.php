@@ -3,6 +3,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     class Facturation_model extends CI_Model{
 
+        function sum_per_coupon($coupon){
+            $query = $this->db->get_where("facturation",array("coupon" => $coupon));
+            $tab = $query->result_array();
+            $sum = 0;
+            foreach($tab as $x){
+                $sum+=(float)$x["prixTotale"];
+            }
+            return $sum;
+        }
+
         function add_facturation(){
             $method = $this->input->post("paymentMethod");
             $id = $this->session->userdata("userId");
@@ -17,11 +27,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
             $orders =$this->input->post("orders");
             $nbr =$this->input->post("nbr");
             $coupon = $this->input->post("couponn");
-
-            if($method === "en ligne"){
-                $price*=(1-0.05);
+            // if($method === "en ligne"){
+            //     $price*=(1-0.05);
+            // }
+            $compare = $this->db->get("societe")->result_array()[0]["compare"];
+            $reduction = $this->db->get("societe")->result_array()[0]["reduction"];
+            if($compare != NULL){
+                if($price > $compare){
+                    $price=$price*(1-$reduction/100);
+                }
             }
-
+            
             $data = array(
                 "prixTotale" => $price,
                 "idClient" => $id,
@@ -37,7 +53,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 "quantities" => $nbr,
                 "coupon"=>$coupon,
             );
+            if(isset($coupon)){
+                $sum = $this->facturation_model->sum_per_coupon($coupon) + $price;
+                $this->db->where("couponsCle",$coupon);
+                $this->db->update("coupons",array("sum" => $sum));
+            }
             $this->db->insert("facturation",$data);
+            
         }
 
         function get_sales_by_client($id){
@@ -119,4 +141,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
             }
             return $tab;
         }
+
+        function get_facturation_by_region(){
+            $this->db->group_by("city");
+            $this->db->select("city");
+            $this->db->select_sum("prixTotale");
+            // $this->db->sum("prixTotale");
+            $query = $this->db->get("facturation");
+            return $query->result_array();
+        }
+
+        function get_compare_and_reduction(){
+            $query = $this->db->get("societe");
+            return $query->result_array();
+        }
+       
     }

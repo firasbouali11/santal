@@ -5,7 +5,7 @@
 				<div class="col-md-12">
 					<div class="row text-center">
 						<div class="col-md-12 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="500">
-							<h1 style="font-family: 'Montserrat', sans-serif;font-size: 50px;color: #FCA1A0; margin-top: 50px;">
+							<h1 id="logooo" style="font-family: 'logofont';font-size: 50px;color: #FCA1A0; margin-top: 50px;">
 								SANTAL</h1>
 						</div>
 						<div class="col-md-12 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
@@ -66,8 +66,12 @@
 									</span>
 								</div>
 								<h3 class="text-color-default text-2 mb-0"><a href="<?= base_url() . 'produits/' . $popular->id ?>"><?php echo $popular->title; ?></a></h3>
-								<span class="price font-primary text-4"><strong class="text-color-dark"><?php echo $popular->price; ?> DT</strong></span>
-								<!-- <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">69 DT</strong></span> -->
+								<?php if ($popular->reduction != NULL) { ?>
+									<span class="price font-primary text-4"><strong class="text-color-dark" style="color: #FCA1A0 !important;font-size:27px"><?= $popular->price * (1 - $popular->reduction / 100) ?> DT</strong></span>
+									<span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default"><?= $popular->price ?> DT</strong></span>
+								<?php } else { ?>
+									<span class="price font-primary text-4"><strong class="text-color-dark" style="color: #FCA1A0 !important;font-size:27px"><?php echo $popular->price; ?> DT</strong></span>
+								<?php } ?>
 								<script>
 									$("<?= "#popular" . $popular->id ?>").click(() => {
 										$.ajax({
@@ -112,8 +116,12 @@
 							</div>
 							<div class="col-8">
 								<h3 class="text-color-default text-2 mb-0"><a href="<?= base_url() . 'produits/' . $new->id ?>"><?php echo $new->title; ?></a></h3>
-								<span class="price font-primary text-4"><strong class="text-color-dark"><?php echo $new->price; ?> DT</strong></span>
-								<!-- <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">69 DT</strong></span> -->
+								<?php if ($new->reduction != 0 || $new->reduction != NULL) { ?>
+									<span class="price font-primary text-4"><strong style="color: #FCA1A0 !important;font-size:30px"><?= $new->price * (1 - $new->reduction / 100) ?> DT</strong></span>
+									<span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default"><?= $new->price ?> DT</strong></span>
+								<?php } else { ?>
+									<span class="price font-primary text-4"><strong class="text-color-dark" style="color: #FCA1A0 !important;font-size:27px"><?php echo $new->price; ?> DT</strong></span>
+								<?php } ?>
 							</div>
 						</div>
 
@@ -154,8 +162,12 @@
 
 								</span>
 
-								<span class="price font-primary text-4"><strong class="text-color-dark"><?php echo $top->price; ?> DT</strong></span>
-								<!-- <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">99 DT</strong></span> -->
+								<?php if ($top->reduction != 0 || $top->reduction != NULL) { ?>
+									<span class="price font-primary text-4"><strong class="text-color-dark" style="color: #FCA1A0 !important;font-size:27px"><?= $top->price * (1 - $top->reduction / 100) ?> DT</strong></span>
+									<span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default"><?= $top->price ?> DT</strong></span>
+								<?php } else { ?>
+									<span class="price font-primary text-4"><strong class="text-color-dark" style="color: #FCA1A0 !important;font-size:27px"><?php echo $top->price; ?> DT</strong></span>
+								<?php } ?>
 							</div>
 						</div>
 
@@ -306,8 +318,12 @@
 								<div class="product-info-title">
 									<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="<?= base_url() . 'produits/' . $best->id ?>"><?php echo $best->title; ?></a>
 									</h3>
-									<span class="price font-primary text-4"><strong class="text-color-dark"><?php echo $best->price; ?> DT</strong></span>
-									<!-- <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">199 DT</strong></span> -->
+									<?php if ($best->reduction != 0 || $best->reduction != NULL) { ?>
+										<span class="price font-primary text-4"><strong class="text-color-dark" style="color: #FCA1A0 !important;font-size:27px"><?= $best->price * (1 - $best->reduction / 100) ?> DT</strong></span>
+										<span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default"><?= $best->price ?> DT</strong></span>
+									<?php } else { ?>
+										<span class="price font-primary text-4"><strong class="text-color-dark" style="color: #FCA1A0 !important;font-size:27px"><?php echo $best->price; ?> DT</strong></span>
+									<?php } ?>
 								</div>
 								<div class="product-info-rate d-flex">
 
@@ -350,23 +366,23 @@
 				</div>
 			</div>
 			<div class="row justify-content-center">
-			<?php foreach ($women_categories as $categ) { ?>
-				<div class="col-8 col-md-5 col-lg-3 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
-					<a href="<?= base_url() ?>produits#femme_visage">
-						<div class="image-frame overlay overlay-show overlay-op-5 image-frame-style-1 image-frame-effect-2 image-frame-style-5">
-							<div class="image-frame-wrapper">
-								<img src="<?= base_url() ?>assets/img/shop/<?= $categ->photo ?>" class="img-fluid" alt="">
-								<div class="image-frame-info image-frame-info-show">
-									<div class="image-frame-info-box-style-1 background-pink">
-										<h3 style="color: #fff;font-weight: 700;" class=" text-uppercase text-1 m-0 p-0">
-											<?= $categ->nom_categorie ?></h3>
+				<?php foreach ($women_categories as $categ) { ?>
+					<div class="col-8 col-md-5 col-lg-3 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
+						<a href="<?= base_url() ?>produits#femme_visage">
+							<div class="image-frame overlay overlay-show overlay-op-5 image-frame-style-1 image-frame-effect-2 image-frame-style-5">
+								<div class="image-frame-wrapper">
+									<img src="<?= base_url() ?>assets/img/shop/<?= $categ->photo ?>" class="img-fluid" alt="">
+									<div class="image-frame-info image-frame-info-show">
+										<div class="image-frame-info-box-style-1 background-pink">
+											<h3 style="color: #fff;font-weight: 700;" class=" text-uppercase text-1 m-0 p-0">
+												<?= $categ->nom_categorie ?></h3>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</a>
-				</div>
-			<?php } ?>
+						</a>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 	</section>

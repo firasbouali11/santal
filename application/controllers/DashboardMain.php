@@ -69,6 +69,8 @@ class DashboardMain extends CI_Controller
 			$data["contact"] = $this->contact_model->get_contact();
 			$data["collabs"] = $this->coupons_model->get_collabs();
 			$data["collabss"] = $this->coupons_model->get_coupons_owners();
+			$data["regions"] = $this->facturation_model->get_facturation_by_region();
+			$data["cr"] = $this->facturation_model->get_compare_and_reduction();
 
 			$this->load->view("dashboard/header",$data);
 			$this->load->view("dashboard/$page", $data);
@@ -84,6 +86,17 @@ class DashboardMain extends CI_Controller
 		$data["panier"] = $this->facturation_model->get_order_panier($id); 
 		$this->load->view("dashboard/header",$data);
 		$this->load->view("dashboard/ecommerce_order_details",$data);
+		$this->load->view("dashboard/footer");
+	}
+	function profile_collaborator($id){
+		if (!file_exists(APPPATH . "views/dashboard/profile_collaborator.php")) {
+			show_404();
+		}
+		$data['sum'] = $this->facturation_model->get_total_ammount();
+		$data["profile"] = $this->coupons_model->get_collab($id);
+		$data["coupons"] = $this->coupons_model->get_coupons_of_collab($id);
+		$this->load->view("dashboard/header",$data);
+		$this->load->view("dashboard/profile_collaborator",$data);
 		$this->load->view("dashboard/footer");
 	}
 	function edit_category($id){

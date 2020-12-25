@@ -94,7 +94,10 @@ class Users_model extends CI_Model
         $products = $this->cart_model->get_cart();
         $sum = 0;
         foreach ($products as $product) {
-            $sum += $product["price"] * $product["nbrProduit"];
+            if($product["reduction"] == NULL)
+                $sum += $product["price"] * $product["nbrProduit"];
+            else
+                $sum += $product["price"]*(1-$product["reduction"]/100) * $product["nbrProduit"];
         }
         $data = array("sumCart" => $sum);
         $this->db->where("id", $this->session->userdata("userId"));
@@ -211,5 +214,36 @@ class Users_model extends CI_Model
         $this->db->where("id",$id);
         $this->db->delete("user");
         return true;
+    }
+
+    function update_societe($images){
+        $title = $this->input->post("title");
+        $names = $this->input->post("names");
+        $occupations = $this->input->post("occupations");
+        $data = array(
+            "title" => $title,
+            "photos" => $images,
+            "names" => $names,
+            "occupations" => $occupations,
+        );
+        $this->db->where("id",1);
+        $this->db->update("societe",$data);
+    }
+
+    function get_societe(){
+        $query = $this->db->get("societe");
+        return $query->result_array();
+    }
+
+    function update_compare_and_reduction(){
+        $reduction = $this->input->post("reduction");
+        $compare = $this->input->post("comparaison");
+
+        $data = array(
+            "reduction" => $reduction,
+            "compare" => $compare,
+        );
+        $this->db->where("id",1);
+        $this->db->update("societe",$data);
     }
 }

@@ -74,6 +74,46 @@ class Admin extends CI_Controller
         $this->form_validation->set_message("check_password_admin", "Mot de passe actuel incorrect!");
         return $this->users_model->check_current_password_admin($id, $enc_password);
     }
+
+    function qui_sommes_nous(){
+        $files = $_FILES;
+        $cpt = count($_FILES['userfile']['name']);
+        $images = "";
+
+        for ($i = 0; $i < $cpt; $i++) {
+            $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
+            $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
+            $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+            $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
+            $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
+
+            $config['upload_path'] = "./assets/img/authors/";
+            $config['allowed_types'] = 'jpg|png';
+            $config['max_size'] = 1000000;
+            $config['max_width'] = 102400;
+            $config['max_height'] = 76800;
+            echo $i;
+
+            $this->load->library('upload', $config);
+
+
+            if (!$this->upload->do_upload()) {
+                $error = array('error' => $this->upload->display_errors());
+            } else {
+                // $images = $_FILES["userfile"]["name"];
+                $images .= $this->upload->data("file_name");
+                if($i != $cpt-1) $images.=":";
+            }
+        }
+        $this->users_model->update_societe($images);
+
+        redirect("/dashboard/settings");
+    }
+
+    function update_compare_and_reduction(){
+        $this->users_model->update_compare_and_reduction();
+        redirect("/dashboard/settings");
+    }
     
 
 }

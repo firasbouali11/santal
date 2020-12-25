@@ -63,7 +63,7 @@
 							<div class="header-column justify-content-start">
 								<span class="d-none d-sm-flex align-items-center">
 									<i class="fas fa-map-marker-alt mr-1"></i>
-									<?= $contact[1]["value"] ?>
+									<a target="_blank" href="https://www.google.com/maps/place/SANTAL/@37.2730497,9.8719832,17z/data=!3m1!4b1!4m5!3m4!1s0x12e31f831625a953:0x6cfdee7d0211fe93!8m2!3d37.2730497!4d9.8741719"><?= $contact[1]["value"] ?></a>
 								</span>
 								<span class="d-none d-sm-flex align-items-center ml-4">
 									<i class="fas fa-phone mr-1"></i>
@@ -112,7 +112,7 @@
 						<div class="header-column justify-content-start">
 							<div class="header-logo">
 								<a href="Home">
-									<img alt="Santal" src="<?= base_url() ?>assets/img/logos/logo-santal-light.png">
+								<img alt="Santal" style="width: 100px" src="<?= base_url() ?>assets/img/logos/logo.png">
 								</a>
 							</div>
 						</div>
@@ -159,7 +159,7 @@
 											<?php if ($this->session->userdata("logged_in") && $user_info[0]->collab != NULL) { ?>
 											<li class="dropdown">
 												<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>collab">
-													PROFILE
+													PROFIL
 												</a>
 											</li>
 											<?php } ?>
@@ -195,7 +195,7 @@
 															<h2 class="text-color-default font-secondary text-1 mt-3 mb-0"><?= $produit["title"] ?></h2>
 															<strong class="text-color-dark">
 																<span class="qty"><?= $produit["nbrProduit"] ?>x</span>
-																<span class="product-price"><?= $produit["price"] ?> DT</span>
+																<span class="product-price"><?= $produit["price"] *(1-$produit["reduction"]/100)?> DT</span>
 															</strong>
 														</div>
 														<div class="col-5">
@@ -402,8 +402,10 @@
 												<div class="product-info-title">
 													<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="<?= base_url() . 'produits/' . $product["id"] ?>"><?php echo $product["title"]; ?></a>
 													</h3>
-													<span class="price font-primary text-4"><strong class="text-color-dark"><?php echo $product["price"]; ?> DT</strong></span>
-													<!-- <span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">15 DT</strong></span> -->
+													<span class="price font-primary text-4"><strong class="text-color-dark"><?php echo $product["price"]*(1-$product["reduction"]/100); ?> DT</strong></span>
+													<?php if($product["reduction"]) {?>
+													<span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default"><?= $product["price"] ?> DT</strong></span>
+													<?php } ?>
 												</div>
 												<div class="product-info-rate d-flex">
 													<?php for ($i = 0; $i < $product["rate"]; $i++) { ?>

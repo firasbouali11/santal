@@ -53,6 +53,20 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibox">
+                    <div class="ibox-head">
+                        <div class="ibox-title">Revenue par region</div>
+                    </div>
+                    <div class="ibox-body">
+                        <div>
+                            <canvas id="bar_chart3" style="height:200px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- <div class="ibox">
             <div class="ibox-head">
                 <div class="ibox-title">Radar Chart</div>
@@ -230,3 +244,35 @@
         });";
     echo "<script>$x</script>";
     ?>
+    <?php
+    $colors = array("red","blue","green","yello","orange","black","white");
+    $x = "
+          var barData = {
+            // labels: ['homme'],
+            datasets: [";
+
+    foreach ($regions as $i => $region) {
+
+        $x .= "{
+                    label: '" . $region["city"] . "',
+                    backgroundColor: '".$colors[$i]."', //'rgba(220, 220, 220, 0.5)',
+                    data: [" . $region["prixTotale"] . "]
+                },";
+    }
+    $x .= "]
+        };
+        var barOptions = {
+            responsive: true,
+            maintainAspectRatio: false
+        };
+
+        var ctx = document.getElementById('bar_chart3').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: barData,
+            options: barOptions
+        });";
+    echo "<script>$x</script>";
+    ?>
+
+  

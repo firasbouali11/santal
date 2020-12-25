@@ -89,6 +89,7 @@ class Products extends CI_Controller
 		$data["panier"] = $this->cart_model->get_cart();
         $data["sum"] = $this->users_model->get_client_sum($this->session->userdata("userId"));
         $data["contact"] = $this->contact_model->get_contact();
+        $data["user_info"] = $this->users_model->get_current_user($this->session->userdata("userId"));
 
         $this->load->view("produits",$data);
     }

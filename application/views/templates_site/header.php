@@ -76,7 +76,7 @@
 							<div class="header-column justify-content-start">
 								<span class="d-none d-sm-flex align-items-center">
 									<i class="fas fa-map-marker-alt mr-1"></i>
-									<?= $contact[1]["value"] ?>
+									<a target="_blank" href="https://www.google.com/maps/place/SANTAL/@37.2730497,9.8719832,17z/data=!3m1!4b1!4m5!3m4!1s0x12e31f831625a953:0x6cfdee7d0211fe93!8m2!3d37.2730497!4d9.8741719"><?= $contact[1]["value"] ?></a>
 								</span>
 								<span class="d-none d-sm-flex align-items-center ml-4">
 									<i class="fas fa-phone mr-1"></i>
@@ -125,7 +125,7 @@
 						<div class="header-column justify-content-start">
 							<div class="header-logo">
 								<a href="<?= base_url() ?>">
-									<img alt="Santal" style="width: 100px" src="<?= base_url() ?>assets/img/logos/logo-santal-light.png">
+									<img alt="Santal" style="width: 100px" src="<?= base_url() ?>assets/img/logos/logo.png">
 								</a>
 							</div>
 						</div>
@@ -172,7 +172,7 @@
 											<?php if ($this->session->userdata("logged_in") && $user_info[0]->collab ==2 ) { ?>
 											<li class="dropdown">
 												<a class="dropdown-item dropdown-toggle" href="<?= base_url() ?>collab">
-													PROFILE
+													PROFIL
 												</a>
 											</li>
 											<?php } ?>
@@ -209,7 +209,7 @@
 															<h2 class="text-color-default font-secondary text-1 mt-3 mb-0"><?= $produit["title"] ?></h2>
 															<strong class="text-color-dark">
 																<span class="qty"><?= $produit["nbrProduit"] ?>x</span>
-																<span class="product-price"><?= $produit["price"] ?> DT</span>
+																<span class="product-price"><?= !$produit["reduction"] ? $produit["price"] : $produit["price"]*(1-$produit["reduction"]/100)  ?> DT</span>
 															</strong>
 														</div>
 														<div class="col-5">

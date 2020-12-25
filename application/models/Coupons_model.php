@@ -64,6 +64,19 @@ class Coupons_model extends CI_Model
         $query = $this->db->get("user");
         return $query->result_array();
     }
+
+    function get_collab($id){
+        $this->db->where("collab !=",NULL);
+        $this->db->where("id",$id);
+        $query = $this->db->get("user");
+        return $query->row_array();
+    }
+    function get_coupons_of_collab($id){
+        $this->db->where("insta",$id);
+        $query = $this->db->get("coupons");
+        return $query->result_array();
+    }
+
     function approve_collab($id){
         $data = array(
             'collab' => 2
@@ -115,5 +128,15 @@ class Coupons_model extends CI_Model
         );
         $this->db->where("id",$id);
         $this->db->update("coupons",$data);
+    }
+
+    function sum_per_collab($id){
+        $this->db->join("coupons","coupons.insta = users.id");
+        $query = $this->db->get_where("users",array("id" => $id)) ->result_array();
+        $sum = 0;
+        foreach($query as $s){
+            $sum += (float)$s["sum"];
+        }
+        return $sum;
     }
 }
